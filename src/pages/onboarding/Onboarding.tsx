@@ -12,6 +12,7 @@ import FreeTrialIcon from '../../assets/svg/freeAccess.svg?react';
 import { useFirstLoad } from "../../hooks/firstLoad";
 import { usePayment } from "../../hooks/usePayment";
 import { useThemeColor } from "../../hooks/useThemeColor";
+import Loader from "../../components/Loader";
 
 //@ts-ignore
 navigator.getInstalledRelatedApps().then(console.log)
@@ -26,7 +27,7 @@ const OnboardingPage = () => {
   const [selected, setSelected] = useState<'2' | '4' | null>('2');
   const [freeTrial, setFreeTrial] = useState<boolean>(false);
 
-  const { onPayment } = usePayment(Number(selected), freeTrial);
+  const { onPayment, isLoading} = usePayment(Number(selected), freeTrial);
 
   const onClose = () => {
     isOnboardCompleted ? navigate(-1) : navigate('/onboarding/info');
@@ -34,6 +35,7 @@ const OnboardingPage = () => {
 
   return (
     <div className="relative min-h-dvh bg-darkBlue text-[clamp(14px,4vw,18px)]">
+      {isLoading && <Loader />}
        <div
         className="absolute top-0 left-0 w-full h-[40dvh] bg-[url('/png/paywall.png')] bg-repeat bg-[length:110vw] animate-scrollUp pointer-events-none"
         aria-hidden="true"
@@ -146,7 +148,7 @@ const OnboardingPage = () => {
   
       <button
         onClick={onPayment}
-        className="animate-pulse w-full h-[clamp(52px,8dvh,56px)] text-white text-[clamp(14px,4.5vw,18px)] bg-lightPurple mt-[clamp(28px,6vw,36px)] rounded-lg"
+        className="w-full h-[clamp(52px,8dvh,56px)] text-white text-[clamp(14px,4.5vw,18px)] bg-lightPurple mt-[clamp(28px,6vw,36px)] rounded-lg"
       >
         {t('common.continue')}
       </button>

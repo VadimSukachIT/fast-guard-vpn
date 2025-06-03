@@ -8,12 +8,13 @@ import { IS_ONBOARD_COMPLETED } from "../../../constants";
 import { usePayment } from "../../../hooks/usePayment";
 import Timer from "../../../components/Timer";
 import { useThemeColor } from '../../../hooks/useThemeColor';
+import Loader from "../../../components/Loader";
 
 const UnboardingDiscountPage = () => {
   const [, setIsOnboardCompleted] = useLocalStorage(IS_ONBOARD_COMPLETED, false);
   useThemeColor('#1868AD');
 
-  const { onPayment } = usePayment(5, false);
+  const { onPayment, isLoading } = usePayment(5, false);
 
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -25,7 +26,8 @@ const UnboardingDiscountPage = () => {
 
   return (
     <div className="min-h-dvh flex flex-col justify-between bg-gradient-to-b from-[#1868AD] to-[#108FD1] text-white px-[clamp(20px,5vw,32px)]  pt-[clamp(16px,4dvh,56px)] pb-[clamp(20px,6dvh,56px)]">
-    {/* ВЕРХ */}
+    {isLoading && <Loader />}
+
     <div className="flex flex-col justify-between w-full max-w-[480px] mx-auto flex-1">
  
     
@@ -87,7 +89,7 @@ const UnboardingDiscountPage = () => {
     <div className="w-full max-w-[480px] mx-auto">
       <button
         onClick={onPayment}
-        className="animate-pulse w-full h-[clamp(52px,8dvh,56px)] text-[clamp(14px,4.5vw,18px)] bg-white text-heavyBlue rounded-lg"
+        className="w-full h-[clamp(52px,8dvh,56px)] text-[clamp(14px,4.5vw,18px)] bg-white text-heavyBlue rounded-lg"
       >
         {t('onboarding.discount.getDiscount')}
       </button>

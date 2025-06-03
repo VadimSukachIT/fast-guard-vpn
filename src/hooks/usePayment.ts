@@ -1,17 +1,17 @@
-import { useClickPulseFeedback } from "./useClickFeedback";
+import { useState } from "react";
 import { useEvent } from "./useEvent";
 import OneSignal from "react-onesignal";
 
 export const usePayment = (subID: number, isFreeTrial?: boolean) => {
   const { sendEvent } = useEvent();
-  const { startPulseEffect } = useClickPulseFeedback();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   
   const getSubscriptionId = () => {
     return isFreeTrial ? subID - 1 : subID;
   }
 
   const onPayment = async () => {
-    startPulseEffect();
+    setIsLoading(true);
     const pwaId = localStorage.getItem('pwaId');
     const clid = localStorage.getItem('clid');
     const subscriptionId = getSubscriptionId();
@@ -26,5 +26,5 @@ export const usePayment = (subID: number, isFreeTrial?: boolean) => {
     window.location.href = `https://ray.yourmessage.me/v1.0/user/billing/flow/web/yookassa/subscription/create?subscriptionId=${subscriptionId}&pwaId=${pwaId}&clickId=${clid}&onesignalID=${oneSignalID}&source=pwa&urlOk=https://hide-vpn.com?payment-success=true&urlFail=https://hide-vpn.com?payment-success=false`
   };
 
-  return { onPayment };
+  return { onPayment, isLoading };
 }
