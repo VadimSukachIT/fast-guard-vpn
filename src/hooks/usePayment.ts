@@ -1,16 +1,17 @@
+import { useClickFeedback } from "./useClickFeedback";
 import { useEvent } from "./useEvent";
 import OneSignal from "react-onesignal";
 
 export const usePayment = (subID: number, isFreeTrial?: boolean) => {
-
-
+  const handleClickFeedback = useClickFeedback();
   const { sendEvent } = useEvent();
 
   const getSubscriptionId = () => {
     return isFreeTrial ? subID - 1 : subID;
   }
 
-  const onPayment = async () => {
+  const onPayment = async (e: React.MouseEvent<HTMLElement>) => {
+    handleClickFeedback(e);
     const pwaId = localStorage.getItem('pwaId');
     const clid = localStorage.getItem('clid');
     const subscriptionId = getSubscriptionId();
