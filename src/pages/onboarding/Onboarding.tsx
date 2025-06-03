@@ -40,7 +40,7 @@ const OnboardingPage = () => {
       />
         <div className="relative z-10 px-[clamp(20px,5vw,32px)] flex flex-col items-center justify-start min-h-dvh pt-[clamp(16px,4dvh,56px)] pb-[clamp(20px,6dvh,56px)] max-w-[480px] mx-auto">
           <div className="w-full flex items-center">
-            <button onClick={onClose}>
+            <button onClick={onClose} className="opacity-50">
               <CloseIcon className="w-[clamp(28px,8vw,36px)] h-auto" />
             </button>
           </div>
@@ -146,7 +146,7 @@ const OnboardingPage = () => {
   
       <button
         onClick={onPayment}
-        className="w-full h-[clamp(52px,8dvh,56px)] text-white text-[clamp(14px,4.5vw,18px)] bg-lightPurple mt-[clamp(28px,6vw,36px)] rounded-lg"
+        className="animate-pulse w-full h-[clamp(52px,8dvh,56px)] text-white text-[clamp(14px,4.5vw,18px)] bg-lightPurple mt-[clamp(28px,6vw,36px)] rounded-lg"
       >
         {t('common.continue')}
       </button>

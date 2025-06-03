@@ -1,10 +1,15 @@
-
+import { useEffect } from "react";
+import { useClickPulseFeedback } from "./useClickFeedback";
 import { useEvent } from "./useEvent";
 import OneSignal from "react-onesignal";
 
 export const usePayment = (subID: number, isFreeTrial?: boolean) => {
-
   const { sendEvent } = useEvent();
+  const { startPulseEffect } = useClickPulseFeedback();
+  
+  useEffect(() => {
+    startPulseEffect();
+  }, [])
 
   const getSubscriptionId = () => {
     return isFreeTrial ? subID - 1 : subID;

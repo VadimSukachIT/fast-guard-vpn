@@ -38,7 +38,7 @@ body {
   --breakpoint-custom: 25rem;
 
   --animate-scrollUp: scrollUp 50s linear infinite;
-  --animate-pulseOnce: pulseOnce 300ms linear;
+  --animate-pulse: pulse 300ms infinite;
 
   @keyframes scrollUp {
     0% {
@@ -51,7 +51,7 @@ body {
     }
   }
 
-  @keyframes pulseOnce {
+  @keyframes pulse {
     0% {
       transform: scale(1);
     }
