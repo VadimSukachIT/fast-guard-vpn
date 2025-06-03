@@ -1,19 +1,38 @@
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 
-export const useClickFeedback = () => {
-  const handleClickFeedback = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    if ("vibrate" in navigator) {
-      console.log('Vibration called');
-      navigator.vibrate(300);
-    }
+export const useClickPulseFeedback = () => {
+  const intervalRef = useRef<any>(null);
 
-    const el = e.currentTarget;
-    el.classList.add("animate-pulseOnce");
+  const playTick = () => {
+    const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const oscillator = ctx.createOscillator();
+    const gain = ctx.createGain();
 
-    setTimeout(() => {
-      el.classList.remove("animate-pulseOnce");
-    }, 300); // Длительность эффекта в ms (должна совпадать с Tailwind-анимацией)
+    oscillator.type = "square";
+    oscillator.frequency.value = 60;
+
+    oscillator.connect(gain);
+    gain.connect(ctx.destination);
+
+    oscillator.start();
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.05);
+    oscillator.stop(ctx.currentTime + 0.05);
+  };
+
+  const startPulseEffect = useCallback(() => {
+    intervalRef.current = setInterval(() => {
+      // if ("vibrate" in navigator) {
+      //   const result = navigator.vibrate(50);
+      //   if (!result) playTick();
+      // } else {
+        playTick();
+      // }
+    }, 300); // в такт с animation-duration: 1s
   }, []);
 
-  return handleClickFeedback;
+  const stopPulseEffect = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  }, []);
+
+  return { startPulseEffect, stopPulseEffect };
 };

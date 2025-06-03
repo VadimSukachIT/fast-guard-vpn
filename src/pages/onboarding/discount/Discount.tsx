@@ -87,7 +87,7 @@ const UnboardingDiscountPage = () => {
     <div className="w-full max-w-[480px] mx-auto">
       <button
         onClick={onPayment}
-        className="w-full h-[clamp(52px,8dvh,56px)] text-[clamp(14px,4.5vw,18px)] bg-white text-heavyBlue rounded-lg"
+        className="animate-pulse w-full h-[clamp(52px,8dvh,56px)] text-[clamp(14px,4.5vw,18px)] bg-white text-heavyBlue rounded-lg"
       >
         {t('onboarding.discount.getDiscount')}
       </button>
