@@ -11,7 +11,6 @@ export const usePayment = (subID: number, isFreeTrial?: boolean) => {
   }
 
   const onPayment = async (e: React.MouseEvent<HTMLElement>) => {
-    handleClickFeedback(e);
     const pwaId = localStorage.getItem('pwaId');
     const clid = localStorage.getItem('clid');
     const subscriptionId = getSubscriptionId();
