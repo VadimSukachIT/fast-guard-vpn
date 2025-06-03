@@ -14,9 +14,6 @@ import { usePayment } from "../../hooks/usePayment";
 import { useThemeColor } from "../../hooks/useThemeColor";
 import Loader from "../../components/Loader";
 
-//@ts-ignore
-navigator.getInstalledRelatedApps().then(console.log)
-
 const OnboardingPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
