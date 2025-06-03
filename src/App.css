@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+@import 'tailwindcss';
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-darkBlue: #102946;
+  --color-meltedWhite: #5D768A; 
+  --color-customBlack: #172434;
+  --color-deepGreen: #257A51;
+  --color-borderGreen: #5FAE7E;
+  --color-lightGreen: #34C759;
+  --color-lightBlue: #53B3EF;
+  --color-lightPurple: #698BF4;
+  --color-textGrey: #585B60;
+  --color-lightGrey: #ECF1F9;
+  --color-limeGrey: #C6D1E3;
+  --color-heavyBlue: #1969AD;
+  --color-greyWhite: #F6F7FC;
+  --color-shadyGrey: #BEC4CF;
+  --color-skyeBlue: #6994F8;
+  --color-nightBlue: #3C63BE;
+  --color-secondaryGrey: #93979E;
+  --color-primaryGrey: #A6A6A8;
+  --color-buttonGrey: #787880;
+  --color-hoveredBlue: #143D73;
+  --color-borderBlue: #7097C0;
+  --breakpoint-custom: 25rem;
+
+  --animate-scrollUp: scrollUp 50s linear infinite;
+
+  @keyframes scrollUp {
+    0% {
+      background-position-y: 100%;
+      background-position-x: 100%;
+    }
+    100% {
+      background-position-y: 0%;
+      background-position-x: 0%;
+    }
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+

@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #a3a3a3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;;
+}
+
+.main-container {
+  width: 100vw;
+  height: 100dvh;;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.container {
+  padding: clamp(24px, 5vw, 64px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.card {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  padding-top: clamp(20px, 6vw, 32px);
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+}
+
+.icon {
+  width: clamp(64px, 22vw, 100px);
+}
+
+.title {
+  font-size: clamp(18px, 5vw, 22px);
+  font-weight: 600;
+  margin: 0px;
+  margin-top: 10px
+}
+
+.subtitle {
+  font-size: clamp(14px, 4vw, 16px);
+  color: #888;
+  margin: 0px;
+  margin-top: 10px
+}
+
+.rating {
+  font-size:  clamp(14px, 4vw, 16px);
+  font-weight: 500;
+  margin: 0px;
+  margin-top: 10px
+}
+
+.reviews {
+  font-size:  clamp(14px, 4vw, 16px);
+  color: #aaa;
+  margin: 0px;
+  margin-top: 10px
+}
+
+.discount {
+  font-size: 15px;
+  color: #0056d9;
+  font-weight: 500;
+  margin-bottom: clamp(16px, 5vw, 24px);
+}
+
+.bottom-curve {
+  background: #3b45a3;
+  color: white;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  padding: 40px 20px;
+  margin: 0 -clamp(20px, 6vw, 32px);
+  margin-top: clamp(16px, 5vw, 32px);
+  border-top-right-radius: 70%;
+  border-top-left-radius: 70%;
+}
+
+.timer {
+  font-size: clamp(18px, 5vw, 24px);
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.install-btn {
+  background: white;
+  color: #0056d9;
+  font-weight: 600;
+  font-size: clamp(14px, 4vw, 16px);
+  padding: 14px 32px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}

@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #a3a3a3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+}
+
+.main-container {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/png/land6-background.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.overlay {
+  width: 100dvw;
+  height: 100dvh;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+
+.main-container > .container,
+.main-container > div {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  padding: clamp(24px, 5vw, 64px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.card {
+  position: relative;
+  background: rgba(200, 200, 200);
+  border-radius: 16px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  padding: clamp(10px, 5vw, 15px);
+  padding-top: 20px;
+  padding-bottom: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.ios-modal {
+  width: 100%;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Заголовок */
+.modal-title {
+  font-size: clamp(18px,4vw, 22px);
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+/* Подзаголовок */
+.modal-text {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 16px;
+  margin-top: 0;
+  line-height: 1.4;
+}
+
+/* Синяя кнопка в стиле iOS */
+.ios-install-btn {
+  background: none;
+  border: none;
+  color: #007aff;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.ios-separator {
+  height: 1px;
+  width: 100%;
+  background-color: #3C3C435C;
+  margin: 0;
+  border: none;
+  opacity: 0.8;
+}

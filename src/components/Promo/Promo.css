@@ -1,0 +1,39 @@
+.shine {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0%;
+  width: 20%;
+  height: 100%;
+  z-index: 1;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg) translateX(0%);
+
+  animation: shineAnim 3s ease-in-out infinite;
+}
+
+@keyframes shineAnim {
+  0% {
+    transform: skewX(-20deg) translateX(-200%);
+  }
+  100% {
+    transform: skewX(-20deg) translateX(600%);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.pro {
+  background: #3a6bcf;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.8em;
+}

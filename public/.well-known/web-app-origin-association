@@ -1,0 +1,8 @@
+{
+  "web_apps": [
+    {
+      "manifest": "https://hide-vpn.com/manifest.json",
+      "platform": "webapp"
+    }
+  ]
+}

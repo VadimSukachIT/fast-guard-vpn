@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #a3a3a3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+}
+
+.main-container {
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/png/land16-background.png');
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px) brightness(0.6);
+  z-index: 0;
+}
+
+.main-container > .container,
+.main-container > div {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  padding: clamp(24px, 5vw, 64px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.card {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  padding: clamp(10px, 5vw, 15px);
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.timer {
+  color: red;
+  font-size: clamp(16px, 4.5vw, 18px);
+  font-weight: 400;
+  margin: clamp(20px, 7vw, 32px) 0;
+}
+
+.alert {
+  background-color: #4285f4;
+  color: white;
+  padding: 16px;
+  text-align: left;
+}
+
+.alert-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+
+.alert-sub {
+  font-size: 14px;
+  font-weight: 400;
+  color: #BBD5F6;
+}
+
+.instructions {
+  text-align: left;
+  padding: 16px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.instruction-title {
+  font-weight: 600;
+  color: #5C5C5C;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.instructions p {
+  margin-bottom: 10px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #ddd;
+  padding: 12px 0;
+  padding-bottom: 0;
+}
+
+.icons img {
+  width: 20px;
+  margin-right: 12px;
+  opacity: 0.7;
+}
+
+.btn {
+  padding: 12px 24px;
+  font-size: clamp(14px, 4vw, 16px);
+  border-radius: 6px;
+  font-weight: 400;
+  cursor: pointer;
+  border: none;
+}
+
+.btn.cancel {
+  background: white;
+  border: 1px solid #bbb;
+  color: #333;
+}
+
+.btn.update {
+  background: #3b82f6;
+  color: white;
+}

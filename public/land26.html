@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fast Guard VPN</title>
+    <!-- Манифест и цвета PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#292929" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="apple-touch-icon" href="/icons/app-icon-192.png" />
+    <link rel="stylesheet" href="/land26.css" />
+    <link rel="stylesheet" href="/pwa-install-popup1.0.css" />
+    <script defer src="/pwa-install-v5.4.js"></script>
+    <!-- Стили -->
+  </head>
+  <body>
+    <div id="install-popup" class="install-popup hidden">
+      <div class="install-popup-box">
+        <div class="install-popup-icon-wrapper">
+          <svg class="install-popup-loader" viewBox="0 0 100 100">
+            <circle class="loader-path" cx="50" cy="50" r="45" fill="none" stroke="#0051AC" stroke-width="2"
+                    stroke-linecap="round" stroke-dasharray="100 200" />
+          </svg>
+          <div class="install-popup-icon"></div>
+        </div>
+    
+        <div class="install-popup-title">
+          Fast Guard VPN
+          <img src="/svg/shield.svg" alt="" class="install-popup-title-icon" />
+        </div>
+    
+        <!-- Статус "Verified..." -->
+        <div id="install-status-line" class="install-popup-subtitle">
+          Verified by Play Protect
+        </div>
+    
+        <!-- ✓ Installed -->
+        <div id="installed-status-line" class="install-popup-subtitle hidden" style="display: flex; align-items: center; justify-content: center; gap: 6px;">
+          <img src="/svg/checkmark.svg" alt="" style="height: 1em;" />
+          <span style="color: #777;">Installed</span>
+        </div>
+    
+        <!-- Загрузка -->
+        <div id="install-popup-status" class="install-popup-status">Загрузка...</div>
+    
+        <!-- Кнопка открыть -->
+        <a id="install-popup-open-link"
+           href="intent://hide-vpn.com/#Intent;scheme=https;end"
+           class="hidden">
+           Открыть
+        </a>
+      </div>
+    </div>
+    <main class="main-container dark" onclick="installApp()">
+      <div class="overlay"></div>
+      <div class="video-container">
+        <div class="container">
+          <div class="card ios-modal light-modal">
+            <h1 class="modal-title">Внимание!</h1>
+            <p class="modal-text">
+              Пожалуйста, установите VPN-приложение из App Store, чтобы продолжить просмотр в безопасном режиме.
+            </p>
+            <div class="ios-separator"></div>
+            <button class="ios-install-btn">Установить</button>
+          </div>
+        </div>
+        <div class="player-controls">
+          <img src="/png/land26-background-2.png" alt="Player UI" />
+        </div>
+      </div>
+   
+    </main>
+  </body>
+</html>

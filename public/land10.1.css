@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+}
+
+.main-container {
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.container {
+  padding: clamp(24px, 5vw, 64px);
+  padding-top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  position: relative;
+  background:  #B3B3B3;
+  border-radius: 16px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+}
+
+/* Заголовок */
+.modal-title {
+  font-size: clamp(18px,4vw, 22px);
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+/* Подзаголовок */
+.modal-text {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 16px;
+  margin-top: 0;
+  line-height: 1.4;
+}
+
+/* Синяя кнопка в стиле iOS */
+.ios-install-btn {
+  background: none;
+  border: none;
+  color: #007aff;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(10px, 5vw, 15px);
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.ios-install-btn:last-child {
+  margin-bottom: 0;
+}
+
+.ios-separator {
+  height: 1px;
+  width: 100%;
+  background-color: #3C3C435C;
+  margin: 0;
+  border: none;
+  opacity: 0.8;
+}
+
+
+/* Контейнер с фоном */
+.video-container {
+  position: relative;
+  width: 100vw;
+  height: 45vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('/png/land10-background-1.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Абсолютная панель управления */
+.player-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}

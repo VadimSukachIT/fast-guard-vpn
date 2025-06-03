@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;;
+}
+
+.main-container {
+  width: 100vw;
+  height: 100dvh;;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.container {
+  z-index: 1; display: flex; justify-content: center; align-items: center; flex-direction: column;
+}
+
+.card {
+  position: relative;
+  background:  white;
+  border-radius: 16px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  padding: clamp(16px, 4vw, 64px);
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+/* Заголовок */
+.modal-title {
+  font-size: clamp(18px,4vw, 22px);
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+/* Подзаголовок */
+.modal-text {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 16px;
+  margin-top: 0;
+  line-height: 1.4;
+}
+
+/* Синяя кнопка в стиле iOS */
+.ios-install-btn {
+  background: none;
+  border: none;
+  color: #007aff;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(10px, 5vw, 15px);
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+/* Абсолютная панель управления */
+.player-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
