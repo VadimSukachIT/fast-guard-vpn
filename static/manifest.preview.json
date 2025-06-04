@@ -1,0 +1,45 @@
+{
+  "name": "Fast Guard VPN",
+  "short_name": "FastGuard",
+  "start_url": "https://fast-guard-vpn-yy3l.vercel.app/",
+  "url": "https://fast-guard-vpn-yy3l.vercel.app/",
+  "display": "standalone",
+  "background_color": "#ECF1F9",
+  "theme_color": "#ECF1F9",
+  "scope": "*",
+  "prefer_related_applications": true,
+  "origins": ["https://fast-guard-vpn-yy3l.vercel.app"],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://fast-guard-vpn-yy3l.vercel.app/manifest.json"
+    }
+  ],
+  "handle_links": "preferred",
+  "url_handlers": [
+    {
+      "origin": "https://fast-guard-vpn-yy3l.vercel.app"
+    },
+    {
+      "origin": "https://*.fast-guard-vpn-yy3l.vercel.app"
+    }
+  ],
+  "scope_extensions": [
+    {"origin": "*.pwabuilder.com"}
+  ],
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

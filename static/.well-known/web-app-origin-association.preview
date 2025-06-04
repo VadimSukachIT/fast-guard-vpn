@@ -1,0 +1,8 @@
+{
+  "web_apps": [
+    {
+      "manifest": "https://fast-guard-vpn-yy3l.vercel.app/manifest.json",
+      "platform": "webapp"
+    }
+  ]
+}

@@ -24,7 +24,10 @@ export const usePayment = (subID: number, isFreeTrial?: boolean) => {
     await sendEvent(`/event?event=paymentopen&clid=${clid}&pwaID=${pwaId}&onesignalID=${oneSignalID}&subID=${subID}`)
     
     window.location.href = `https://ray.yourmessage.me/v1.0/user/billing/flow/web/yookassa/subscription/create?subscriptionId=${subscriptionId}&pwaId=${pwaId}&clickId=${clid}&onesignalID=${oneSignalID}&source=pwa&urlOk=https://hide-vpn.com?payment-success=true&urlFail=https://hide-vpn.com?payment-success=false`
-    setIsLoading(false);
+
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
   };
 
   return { onPayment, isLoading };

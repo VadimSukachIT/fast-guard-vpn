@@ -4,6 +4,11 @@ import tailwindcss from '@tailwindcss/vite'
 import svgr from 'vite-plugin-svgr'
 import { VitePWA } from 'vite-plugin-pwa'
 
+import { viteStaticCopy } from 'vite-plugin-static-copy'
+const isPreview = process.env.VERCEL_ENV === 'production';
+
+console.log(process.env.VERCEL_ENV);
+
 export default defineConfig({
   plugins: [
     svgr({
@@ -11,6 +16,22 @@ export default defineConfig({
     }),
     tailwindcss(),
     react(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: isPreview ? 'static/manifest.preview.json' : 'static/manifest.prod.json',
+          dest: '',
+          rename: 'manifest.json',
+        },
+        {
+          src: isPreview
+            ? 'static/.well-known/web-app-origin-association.preview'
+            : 'static/.well-known/web-app-origin-association.prod',
+          dest: '.well-known',
+          rename: 'web-app-origin-association',
+        }
+      ]
+    }),
     VitePWA({
         strategies: 'generateSW',
         injectRegister: null,
