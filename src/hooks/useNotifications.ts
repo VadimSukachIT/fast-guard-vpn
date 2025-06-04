@@ -17,7 +17,7 @@ export const useNotifications = () => {
   useEffect(() => {
     const initNotifications = async () => {
       console.log('[OneSignal] Init called');
-      console.log('Use effect : ', import.meta.env.VITE_VERCEL_ENV);
+      console.log('Use effect env: ', import.meta.env.VITE_VERCEL_ENV);
       await OneSignal.init({
         appId: import.meta.env.VITE_VERCEL_EN === 'production' ? ONE_SIGNAL_TEST_APP_ID : ONE_SIGNAL_APP_ID,
         serviceWorkerPath: 'service-worker.js',
