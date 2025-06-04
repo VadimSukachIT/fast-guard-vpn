@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 
@@ -13,55 +13,15 @@ import { useFirstLoad } from "../../hooks/firstLoad";
 import { usePayment } from "../../hooks/usePayment";
 import { useThemeColor } from "../../hooks/useThemeColor";
 import Loader from "../../components/Loader";
+import { useLoopVibration } from "../../hooks/useVibration";
 
 const OnboardingPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   useFirstLoad();
   useThemeColor('#102946');
-
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [vibrating, setVibrating] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Запускаем вибрацию повторно через каждые N секунд
-  const repeatVibration = () => {
-    if ('vibrate' in navigator) {
-      // вибрация: 50ms вибрация, 950ms пауза — 3 повтора
-      navigator.vibrate([
-        50, 950, 50, 950, 50, 950, 50, 950, 50, 950,
-        50, 950, 50, 950, 50, 950, 50, 950, 50, 950
-      ]);
-    }
-
-    timeoutRef.current = setTimeout(repeatVibration, 10000); // каждые 3 сек
-  };
-
-  const startEffect = () => {
-    if (vibrating) return;
-    setVibrating(true);
-
-    // Визуальная пульсация
-    buttonRef.current?.classList.add("pulse-loop");
-
-    // Первая вибрация + дальше повторяем
-    repeatVibration();
-  };
-
-  // Запуск после первого касания страницы
-  useEffect(() => {
-    const handler = () => {
-      startEffect();
-      document.removeEventListener("pointerdown", handler);
-    };
-
-    document.addEventListener("pointerdown", handler, { once: true, passive: true });
-
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, []);
-
+  const { buttonRef } = useLoopVibration();
+ 
   const [isOnboardCompleted] = useLocalStorage(IS_ONBOARD_COMPLETED, false);
   const [selected, setSelected] = useState<'2' | '4' | null>('2');
   const [freeTrial, setFreeTrial] = useState<boolean>(false);
@@ -186,8 +146,9 @@ const OnboardingPage = () => {
       </div>
   
       <button
+        ref={buttonRef}
         onClick={onPayment}
-        className="animate-pulseLoops w-full h-[clamp(52px,8dvh,56px)] text-white text-[clamp(14px,4.5vw,18px)] bg-lightPurple mt-[clamp(28px,6vw,36px)] rounded-lg"
+        className="w-full h-[clamp(52px,8dvh,56px)] text-white text-[clamp(14px,4.5vw,18px)] bg-lightPurple mt-[clamp(28px,6vw,36px)] rounded-lg"
       >
         {t('common.continue')}
       </button>
