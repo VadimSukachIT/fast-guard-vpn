@@ -2,7 +2,7 @@ import OneSignal from 'react-onesignal';
 import { useEffect, useState } from 'react';
 import { useEvent } from './useEvent';
 
-import { ONE_SIGNAL_APP_ID, ONE_SIGNAL_TEST_APP_ID } from '../constants';
+import { ONE_SIGNAL_TEST_APP_ID } from '../constants';
 import { useTranslation } from 'react-i18next';
 import { useLocalStorage } from 'usehooks-ts';
 
