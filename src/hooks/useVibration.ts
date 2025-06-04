@@ -4,6 +4,7 @@ export const useLoopVibration = () => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    console.log('effect triggered');
     const isAndroidStandalone = () =>
       /android/i.test(navigator.userAgent) &&
       (window.matchMedia("(display-mode: standalone)").matches || (navigator as any).standalone);
@@ -23,6 +24,7 @@ export const useLoopVibration = () => {
     }, 1000);
 
     return () => {
+      console.log('clear triggered');
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, []);
