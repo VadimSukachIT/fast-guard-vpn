@@ -16,8 +16,6 @@ export const useNotifications = () => {
 
   useEffect(() => {
     const initNotifications = async () => {
-      console.log('[OneSignal] Init called');
-      console.log('Use effect env: ', import.meta.env.VITE_VERCEL_ENV);
       await OneSignal.init({
         appId: import.meta.env.VITE_VERCEL_ENV === 'production' ? ONE_SIGNAL_TEST_APP_ID : ONE_SIGNAL_APP_ID,
         serviceWorkerPath: 'service-worker.js',
@@ -68,10 +66,6 @@ export const useNotifications = () => {
       if (!OneSignal || !OneSignal.Notifications || !OneSignal.User) {
         console.warn('[OneSignal] SDK not fully initialized');
       }
-
-      console.log('[OneSignal] Permission:', await OneSignal.Notifications.permission);
-      console.log('[OneSignal] Subscribed:', await OneSignal.User.PushSubscription.optedIn);
-      console.log('[OneSignal] notificationPromptShown:', notificationPromptShown);
 
         const permission = await OneSignal.Notifications.permission;
         const isSubscribed = await OneSignal.User.PushSubscription.optedIn;

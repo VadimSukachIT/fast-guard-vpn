@@ -37,7 +37,6 @@ export const useNotificationsSettings = () => {
   }
 
   const toggleNotifications = () => {
-    console.log('Status: ', OneSignal.User.PushSubscription.optedIn)
     if (OneSignal.User.PushSubscription.optedIn) {
        disableNotifications();
        return;

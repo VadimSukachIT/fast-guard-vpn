@@ -6,7 +6,6 @@ import { VitePWA } from 'vite-plugin-pwa'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 const isPreview = process.env.VITE_VERCEL_ENV === 'production';
-console.log(process.env.VITE_VERCEL_ENV);
 
 export default defineConfig({
   plugins: [

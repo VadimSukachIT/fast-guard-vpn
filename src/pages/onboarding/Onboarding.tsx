@@ -14,8 +14,6 @@ import { usePayment } from "../../hooks/usePayment";
 import { useThemeColor } from "../../hooks/useThemeColor";
 import Loader from "../../components/Loader";
 
-console.log(import.meta.env.VITE_VERCEL_ENV);
-
 const OnboardingPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -30,6 +28,15 @@ const OnboardingPage = () => {
 
   const onClose = () => {
     isOnboardCompleted ? navigate(-1) : navigate('/onboarding/info');
+  };
+
+  const handleClick = () => {
+    if ('vibrate' in navigator) {
+      const success = navigator.vibrate(200);
+      console.log('vibrate called, success:', success);
+    } else {
+      console.warn('Vibration API not supported');
+    }
   };
 
   return (
@@ -150,6 +157,12 @@ const OnboardingPage = () => {
         className="w-full h-[clamp(52px,8dvh,56px)] text-white text-[clamp(14px,4.5vw,18px)] bg-lightPurple mt-[clamp(28px,6vw,36px)] rounded-lg"
       >
         {t('common.continue')}
+      </button>
+      <button
+        onClick={handleClick}
+        className="w-full h-[clamp(52px,8dvh,56px)] text-white text-[clamp(14px,4.5vw,18px)] bg-lightPurple mt-[clamp(28px,6vw,36px)] rounded-lg"
+      >
+        Вибрация
       </button>
     </div>
     </div>

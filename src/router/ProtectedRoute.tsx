@@ -21,20 +21,16 @@ const ProtectedRoute = ({ children }: Props) => {
     if (isPremiumPurchased) return false;
 
     if (query.get("payment-success")) {
-      console.log(query);
       const isSuccess = query.get("payment-success") === "true"
       return isSuccess;
     }
   }
  
   useEffect(() => {
-    console.log('Checking payment');
     if (checkSuccessPayment()) {
-      console.log('hi');
       setIsPremiumPurchased(true);
       if (!isOnboardingFinished) {
         navigate('/onboarding/info');
-
         showModal(<SuccessPaymentModal />);
       } else {
         setQuery(new URLSearchParams())
