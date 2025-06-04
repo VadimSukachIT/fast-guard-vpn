@@ -13,11 +13,13 @@ import { useFirstLoad } from "../../hooks/firstLoad";
 import { usePayment } from "../../hooks/usePayment";
 import { useThemeColor } from "../../hooks/useThemeColor";
 import Loader from "../../components/Loader";
+import { useLoopVibration } from "../../hooks/useVibration";
 
 const OnboardingPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   useFirstLoad();
+  useLoopVibration();
   useThemeColor('#102946');
 
   const [isOnboardCompleted] = useLocalStorage(IS_ONBOARD_COMPLETED, false);
@@ -28,16 +30,6 @@ const OnboardingPage = () => {
 
   const onClose = () => {
     isOnboardCompleted ? navigate(-1) : navigate('/onboarding/info');
-  };
-
-  const handleClick = () => {
-    console.log('vibrating test');
-    if ('vibrate' in navigator) {
-      const success = navigator.vibrate(200);
-      console.log('vibrate called, success:', success);
-    } else {
-      console.warn('Vibration API not supported');
-    }
   };
 
   return (
@@ -155,15 +147,9 @@ const OnboardingPage = () => {
   
       <button
         onClick={onPayment}
-        className="w-full h-[clamp(52px,8dvh,56px)] text-white text-[clamp(14px,4.5vw,18px)] bg-lightPurple mt-[clamp(28px,6vw,36px)] rounded-lg"
+        className="animate-pulseLoops w-full h-[clamp(52px,8dvh,56px)] text-white text-[clamp(14px,4.5vw,18px)] bg-lightPurple mt-[clamp(28px,6vw,36px)] rounded-lg"
       >
         {t('common.continue')}
-      </button>
-      <button
-        onClick={handleClick}
-        className="w-full h-[clamp(52px,8dvh,56px)] text-white text-[clamp(14px,4.5vw,18px)] bg-lightPurple mt-[clamp(28px,6vw,36px)] rounded-lg"
-      >
-        Вибрация
       </button>
     </div>
     </div>
