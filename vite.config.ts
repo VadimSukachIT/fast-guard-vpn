@@ -7,9 +7,15 @@ import { VitePWA } from 'vite-plugin-pwa'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 const isPreview = process.env.VERCEL_ENV === 'production';
 
-console.log(process.env.VERCEL_ENV);
+
+// @ts-ignore
+console.log(__VERCEL_ENV__);
 
 export default defineConfig({
+  define: {
+    // @ts-ignore
+    __VERCEL_ENV__: JSON.stringify(__VERCEL_ENV__ || ''),
+  },
   plugins: [
     svgr({
       include: "**/*.svg?react",

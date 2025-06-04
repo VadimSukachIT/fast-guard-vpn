@@ -14,7 +14,8 @@ import { usePayment } from "../../hooks/usePayment";
 import { useThemeColor } from "../../hooks/useThemeColor";
 import Loader from "../../components/Loader";
 
-console.log(process.env.VERCEL_ENV);
+// @ts-ignore
+console.log(__VERCEL_ENV__);
 
 const OnboardingPage = () => {
   const { t } = useTranslation();
