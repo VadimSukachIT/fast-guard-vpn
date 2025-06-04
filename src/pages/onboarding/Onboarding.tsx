@@ -31,6 +31,7 @@ const OnboardingPage = () => {
   };
 
   const handleClick = () => {
+    console.log('vibrating test');
     if ('vibrate' in navigator) {
       const success = navigator.vibrate(200);
       console.log('vibrate called, success:', success);
