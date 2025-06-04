@@ -3,19 +3,12 @@ import react from '@vitejs/plugin-react-swc'
 import tailwindcss from '@tailwindcss/vite'
 import svgr from 'vite-plugin-svgr'
 import { VitePWA } from 'vite-plugin-pwa'
-
 import { viteStaticCopy } from 'vite-plugin-static-copy'
-const isPreview = process.env.VERCEL_ENV === 'production';
 
-
-// @ts-ignore
-console.log(__VERCEL_ENV__);
+const isPreview = process.env.VITE_VERCEL_ENV === 'production';
+console.log(process.env.VITE_VERCEL_ENV);
 
 export default defineConfig({
-  define: {
-    // @ts-ignore
-    __VERCEL_ENV__: JSON.stringify(__VERCEL_ENV__ || ''),
-  },
   plugins: [
     svgr({
       include: "**/*.svg?react",
