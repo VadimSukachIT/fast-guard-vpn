@@ -5,6 +5,7 @@ export const useLoopVibration = () => {
 
   useEffect(() => {
     const handle = () => {
+      console.log('hi');
       navigator.vibrate?.(30); // разрешаем
   
       intervalRef.current = setInterval(() => {
