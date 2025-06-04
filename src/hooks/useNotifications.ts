@@ -2,7 +2,7 @@ import OneSignal from 'react-onesignal';
 import { useEffect, useState } from 'react';
 import { useEvent } from './useEvent';
 
-import { ONE_SIGNAL_APP_ID } from '../constants';
+import { ONE_SIGNAL_APP_ID, ONE_SIGNAL_TEST_APP_ID } from '../constants';
 import { useTranslation } from 'react-i18next';
 import { useLocalStorage } from 'usehooks-ts';
 
@@ -15,10 +15,11 @@ export const useNotifications = () => {
   const onClose = () => setShowPrompt(false);
 
   useEffect(() => {
-
     const initNotifications = async () => {
+      console.log('[OneSignal] Init called');
+      console.log('Use effect : ', import.meta.env.VITE_VERCEL_EN);
       await OneSignal.init({
-        appId: ONE_SIGNAL_APP_ID,
+        appId: import.meta.env.VITE_VERCEL_EN === 'production' ? ONE_SIGNAL_TEST_APP_ID : ONE_SIGNAL_APP_ID,
         serviceWorkerPath: 'service-worker.js',
         serviceWorkerUpdaterPath: 'service-worker.js',
         serviceWorkerOverrideForTypical: true,
@@ -63,6 +64,14 @@ export const useNotifications = () => {
           enable: false,
         }
       });
+
+      if (!OneSignal || !OneSignal.Notifications || !OneSignal.User) {
+        console.warn('[OneSignal] SDK not fully initialized');
+      }
+
+      console.log('[OneSignal] Permission:', await OneSignal.Notifications.permission);
+      console.log('[OneSignal] Subscribed:', await OneSignal.User.PushSubscription.optedIn);
+      console.log('[OneSignal] notificationPromptShown:', notificationPromptShown);
 
         const permission = await OneSignal.Notifications.permission;
         const isSubscribed = await OneSignal.User.PushSubscription.optedIn;

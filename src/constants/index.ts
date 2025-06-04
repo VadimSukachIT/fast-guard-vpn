@@ -12,6 +12,7 @@ export const IS_PREMIUM_PURCHASED = 'isPremiumPurchased';
 export const IS_LOAD_EVENT_FIRED = 'isLoadEventFired';
 export const IS_NOTIFICATIONS_ENABLED = 'isNotificationsEnabled';
 export const ONE_SIGNAL_APP_ID = 'c30d700e-a2f5-4b7c-aa55-9656bdd74747';
+export const ONE_SIGNAL_TEST_APP_ID = 'a37659d2-0b83-4803-a669-31b5a2aa8f53';
 export const SELECTED_SERVER_ID = 'selectedCountry';
 export const DEFAULT_SERVER_ID = '1';
 
