@@ -2,7 +2,7 @@ import OneSignal from 'react-onesignal';
 import { useEffect, useState } from 'react';
 import { useEvent } from './useEvent';
 
-import { ONE_SIGNAL_TEST_APP_ID } from '../constants';
+import { ONE_SIGNAL_APP_ID, ONE_SIGNAL_TEST_APP_ID } from '../constants';
 import { useTranslation } from 'react-i18next';
 import { useLocalStorage } from 'usehooks-ts';
 
@@ -19,7 +19,7 @@ export const useNotifications = () => {
       console.log('[OneSignal] Init called');
       console.log('Use effect env: ', import.meta.env.VITE_VERCEL_ENV);
       await OneSignal.init({
-        appId: ONE_SIGNAL_TEST_APP_ID,
+        appId: import.meta.env.VITE_VERCEL_ENV === 'production' ? ONE_SIGNAL_TEST_APP_ID : ONE_SIGNAL_APP_ID,
         serviceWorkerPath: 'service-worker.js',
         serviceWorkerUpdaterPath: 'service-worker.js',
         serviceWorkerOverrideForTypical: true,
