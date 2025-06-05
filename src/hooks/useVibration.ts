@@ -11,9 +11,9 @@ export const useLoopVibration = () => {
         if ('vibrate' in navigator) {
           navigator.vibrate([100, 900, 100, 900, 100, 900]);
         }
-      }, 3000);
+      }, 3550);
 
-      
+
       setTimeout(() => {
         if ('vibrate' in navigator) {
           navigator.vibrate([100, 900, 100, 900, 100, 900]);
