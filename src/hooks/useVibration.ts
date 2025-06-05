@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 export const useLoopVibration = () => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const { playAudio } = useAudio();
+  const { playLoop, stopAudio } = useAudio();
 
   useEffect(() => {
     const handler = (e: PointerEvent) => {
@@ -18,7 +18,7 @@ export const useLoopVibration = () => {
           navigator.vibrate([100, 900, 100, 900, 100, 900]);
         }
         
-        playAudio();
+        playLoop();
 
         timeoutRef.current = setInterval(() => {
           if ('vibrate' in navigator) {
@@ -35,6 +35,7 @@ export const useLoopVibration = () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       buttonRef.current?.classList.remove("animate-pulseLoops");
       document.removeEventListener("pointerdown", handler);
+      stopAudio();
       if ("vibrate" in navigator) {
         navigator.vibrate(0);
       }
