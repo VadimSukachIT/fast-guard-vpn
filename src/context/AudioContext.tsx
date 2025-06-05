@@ -1,10 +1,13 @@
 import React, { createContext, useContext, useRef, useState } from "react";
 
+
 type AudioContextType = {
   playAudio: (src?: string) => void;
+  isPlaying: boolean;
 };
 
 const AudioContext = createContext<AudioContextType | undefined>(undefined);
+
 
 const DEFAULT_SRC = "/sounds/default.mp3";
 
