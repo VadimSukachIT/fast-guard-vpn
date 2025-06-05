@@ -5,6 +5,7 @@ import AppRouter from './router/AppRouter';
 import { useEffect } from 'react';
 import { ModalProvider } from './context/ModalContext';
 import ModalHost from './components/ModalHost';
+import { AudioProvider } from './context/AudioContext';
 
 function App() {
   useEffect(() => {
@@ -15,10 +16,12 @@ function App() {
 
   return (
     <div className="App">
-      <ModalProvider>
-        <AppRouter />
-        <ModalHost />
-      </ModalProvider>
+      <AudioProvider>
+        <ModalProvider>
+          <AppRouter />
+          <ModalHost />
+        </ModalProvider>
+      </AudioProvider>
     </div>
   );
 }
