@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 
 export const useLoopVibration = () => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [vibrating, setVibrating] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
 
@@ -23,6 +22,7 @@ export const useLoopVibration = () => {
 
       document.removeEventListener("pointerdown", handler);
     }, 500);
+  }
 
     document.addEventListener("pointerdown", handler, { once: true, passive: true });
 
