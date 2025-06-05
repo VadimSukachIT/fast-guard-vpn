@@ -7,7 +7,7 @@ export const useLoopVibration = () => {
 
   useEffect(() => {
     const handler = () => {
-      timeoutRef.current = setTimeout(() => {
+      timeoutRef.current = setInterval(() => {
         if ('vibrate' in navigator) {
           navigator.vibrate([100, 900, 100, 900, 100, 900]);
         }
