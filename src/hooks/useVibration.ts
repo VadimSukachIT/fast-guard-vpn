@@ -5,27 +5,25 @@ export const useLoopVibration = () => {
   const [vibrating, setVibrating] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const isVibrationAvailable = () =>
-    typeof navigator !== "undefined" && "vibrate" in navigator;
+  const repeatVibration = () => {
+    buttonRef.current?.classList.add("animate-pulseLoops");
+    timeoutRef.current = setTimeout(repeatVibration, 3000); // каждые 3 сек
+  };
 
-  const loopVibrate = () => {
-    if (isVibrationAvailable()) {
-      navigator.vibrate([100, 900, 100, 900, 100, 900]);
-    }
-    timeoutRef.current = setTimeout(loopVibrate, 3000);
+  const startEffect = () => {
+    if (vibrating) return;
+    setVibrating(true);
+    setTimeout(() => {
+      if ('vibrate' in navigator) {
+        navigator.vibrate([100, 900, 100, 900, 100, 900]);
+      }
+      repeatVibration();
+    }, 500)
   };
 
   useEffect(() => {
     const handler = () => {
-      if (!vibrating) {
-        setVibrating(true);
-        if (isVibrationAvailable()) {
-          navigator.vibrate([100, 900, 100, 900, 100, 900]);
-        }
-        buttonRef.current?.classList.add("animate-pulseLoops");
-        timeoutRef.current = setTimeout(loopVibrate, 3000);
-      }
-
+      startEffect();
       document.removeEventListener("pointerdown", handler);
     };
 
@@ -35,12 +33,11 @@ export const useLoopVibration = () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       buttonRef.current?.classList.remove("animate-pulseLoops");
       document.removeEventListener("pointerdown", handler);
-      if (isVibrationAvailable()) {
+      if ("vibrate" in navigator) {
         navigator.vibrate(0);
       }
     };
-  }, [vibrating]);
-
+  }, []);
 
   return {
     buttonRef,
