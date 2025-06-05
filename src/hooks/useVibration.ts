@@ -5,27 +5,24 @@ export const useLoopVibration = () => {
   const [vibrating, setVibrating] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const repeatVibration = () => {
-    buttonRef.current?.classList.add("animate-pulseLoops");
-    timeoutRef.current = setTimeout(repeatVibration, 3000); // каждые 3 сек
-  };
-
-  const startEffect = () => {
-    if (vibrating) return;
-    setVibrating(true);
-    setTimeout(() => {
-      if ('vibrate' in navigator) {
-        navigator.vibrate([100, 900, 100, 900, 100, 900]);
-      }
-      repeatVibration();
-    }, 500)
-  };
 
   useEffect(() => {
     const handler = () => {
-      startEffect();
+      setTimeout(() => {
+        if ('vibrate' in navigator) {
+          navigator.vibrate([100, 900, 100, 900, 100, 900]);
+        }
+
+        buttonRef.current?.classList.add("animate-pulseLoops");
+
+        timeoutRef.current = setTimeout(() => {
+          if ('vibrate' in navigator) {
+            navigator.vibrate([100, 900, 100, 900, 100, 900]);
+          }
+        }, 3000);
+
       document.removeEventListener("pointerdown", handler);
-    };
+    }, 500);
 
     document.addEventListener("pointerdown", handler, { once: true, passive: true });
 
