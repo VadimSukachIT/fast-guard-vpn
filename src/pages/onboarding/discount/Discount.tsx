@@ -46,7 +46,6 @@ const UnboardingDiscountPage = () => {
       </div>
   
     <div className="flex flex-1 w-full flex-col items-center justify-center gap-[clamp(24px,8dvh,300px)]">
-      {/* Заголовок + описание */}
       <div className="text-left">
         <h1 className="text-[clamp(24px,9vw,36px)] font-bold mb-[clamp(12px,3vw,18px)] leading-tight">
           {t('onboarding.discount.title')}

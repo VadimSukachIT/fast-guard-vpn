@@ -10,6 +10,7 @@ export const useLoopVibration = () => {
       buttonRef.current?.classList.add("animate-pulseLoops");
       const target = e.target as HTMLElement;
       if (target.closest("[data-ignore-vibrate]")) return;
+      console.log(target, target.closest("[data-ignore-vibrate]"))
 
       setTimeout(() => {
         if ('vibrate' in navigator) {
