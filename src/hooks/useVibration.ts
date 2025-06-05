@@ -5,30 +5,27 @@ export const useLoopVibration = () => {
   const [vibrating, setVibrating] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const repeatVibration = () => {
-    if ('vibrate' in navigator) {
+  const isVibrationAvailable = () =>
+    typeof navigator !== "undefined" && "vibrate" in navigator;
+
+  const loopVibrate = () => {
+    if (isVibrationAvailable()) {
       navigator.vibrate([100, 900, 100, 900, 100, 900]);
-
     }
-
-    timeoutRef.current = setTimeout(repeatVibration, 3000); // каждые 3 сек
+    timeoutRef.current = setTimeout(loopVibrate, 3000);
   };
 
-  const startEffect = () => {
-    if (vibrating) return;
-    setVibrating(true);
-
-    // Визуальная пульсация
-    buttonRef.current?.classList.add("animate-pulseLoops");
-
-    // Первая вибрация + дальше повторяем
-    repeatVibration();
-  };
-
-  // Запуск после первого касания страницы
   useEffect(() => {
     const handler = () => {
-      startEffect();
+      if (!vibrating) {
+        setVibrating(true);
+        if (isVibrationAvailable()) {
+          navigator.vibrate([100, 900, 100, 900, 100, 900]);
+        }
+        buttonRef.current?.classList.add("animate-pulseLoops");
+        timeoutRef.current = setTimeout(loopVibrate, 3000);
+      }
+
       document.removeEventListener("pointerdown", handler);
     };
 
@@ -38,11 +35,12 @@ export const useLoopVibration = () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       buttonRef.current?.classList.remove("animate-pulseLoops");
       document.removeEventListener("pointerdown", handler);
-      if ("vibrate" in navigator) {
+      if (isVibrationAvailable()) {
         navigator.vibrate(0);
       }
     };
-  }, []);
+  }, [vibrating]);
+
 
   return {
     buttonRef,

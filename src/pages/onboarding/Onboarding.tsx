@@ -21,7 +21,7 @@ const OnboardingPage = () => {
   useFirstLoad();
   useThemeColor('#102946');
   const { buttonRef } = useLoopVibration();
- 
+  
   const [isOnboardCompleted] = useLocalStorage(IS_ONBOARD_COMPLETED, false);
   const [selected, setSelected] = useState<'2' | '4' | null>('2');
   const [freeTrial, setFreeTrial] = useState<boolean>(false);
