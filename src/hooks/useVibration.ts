@@ -7,18 +7,17 @@ export const useLoopVibration = () => {
 
   useEffect(() => {
     const handler = () => {
-      timeoutRef.current = setInterval(() => {
-        if ('vibrate' in navigator) {
-          navigator.vibrate([100, 900, 100, 900, 100, 900]);
-        }
-      }, 3000);
-
-
       setTimeout(() => {
         if ('vibrate' in navigator) {
           navigator.vibrate([100, 900, 100, 900, 100, 900]);
         }
 
+        timeoutRef.current = setInterval(() => {
+          if ('vibrate' in navigator) {
+            navigator.vibrate([100, 900, 100, 900, 100, 900]);
+          }
+        }, 3000);
+        
         buttonRef.current?.classList.add("animate-pulseLoops");
         document.removeEventListener("pointerdown", handler);
     }, 500);
