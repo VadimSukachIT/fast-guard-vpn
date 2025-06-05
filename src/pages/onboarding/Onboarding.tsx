@@ -24,7 +24,7 @@ const OnboardingPage = () => {
   
   const [isOnboardCompleted] = useLocalStorage(IS_ONBOARD_COMPLETED, false);
   const [selected, setSelected] = useState<'2' | '4' | null>('2');
-  const [freeTrial, setFreeTrial] = useState<boolean>(false);
+  const [freeTrial, setFreeTrial] = useState<boolean>(true);
 
   const { onPayment, isLoading} = usePayment(Number(selected), freeTrial);
 

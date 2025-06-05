@@ -40,7 +40,7 @@ const UnboardingDiscountPage = () => {
           </span>
           <Timer />
         </div>
-        <button onClick={onClose} className="shrink-0 ml-auto">
+        <button onClick={onClose} className="shrink-0 ml-auto" data-ignore-vibrate>
           <CloseIcon className="w-[clamp(28px,6vw,36px)] h-auto" />
         </button>
       </div>
