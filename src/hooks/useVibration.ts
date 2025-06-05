@@ -1,4 +1,4 @@
-import { useAudio } from "context/AudioContext";
+import { useAudio } from "../context/AudioContext";
 import { useEffect, useRef } from "react";
 
 export const useLoopVibration = () => {
