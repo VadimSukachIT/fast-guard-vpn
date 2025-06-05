@@ -21,7 +21,7 @@ export const useLoopVibration = () => {
 
         buttonRef.current?.classList.add("animate-pulseLoops");
         document.removeEventListener("pointerdown", handler);
-    }, 500);
+    }, 0);
   }
 
     document.addEventListener("pointerdown", handler, { once: true, passive: true });
