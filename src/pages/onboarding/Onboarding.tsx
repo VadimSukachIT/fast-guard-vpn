@@ -41,7 +41,7 @@ const OnboardingPage = () => {
       />
         <div className="relative z-10 px-[clamp(20px,5vw,32px)] flex flex-col items-center justify-start min-h-dvh pt-[clamp(16px,4dvh,56px)] pb-[clamp(20px,6dvh,56px)] max-w-[480px] mx-auto">
           <div className="w-full flex items-center">
-            <button onClick={onClose} className="opacity-50">
+            <button onClick={onClose} className="opacity-50" data-ignore-vibrate>
               <CloseIcon className="w-[clamp(28px,8vw,36px)] h-auto" />
             </button>
           </div>
