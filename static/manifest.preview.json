@@ -15,7 +15,7 @@
       "url": "https://fast-guard-vpn-yy3l.vercel.app/manifest.json"
     }
   ],
-  "handle_links": "preferred",
+  "handle_links": "none",
   "url_handlers": [
     {
       "origin": "https://fast-guard-vpn-yy3l.vercel.app"
