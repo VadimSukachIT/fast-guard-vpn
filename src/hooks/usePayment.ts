@@ -3,6 +3,8 @@ import { useEvent } from "./useEvent";
 import OneSignal from "react-onesignal";
 import { useLocalStorage } from "usehooks-ts";
 
+const isAndroid = /android/i.test(navigator.userAgent);
+
 export const usePayment = (subID: number, isFreeTrial?: boolean) => {
   const { sendEvent } = useEvent();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -27,7 +29,7 @@ export const usePayment = (subID: number, isFreeTrial?: boolean) => {
      console.log('Is standalone: ', isStandalone);
      console.log(conf, typeof conf);
      const paymentLink = `https://ray.yourmessage.me/v1.0/user/billing/flow/web/yookassa/subscription/create?subscriptionId=${subscriptionId}&pwaId=${pwaId}&clickId=${clid}&onesignalID=${oneSignalID}&source=pwa&urlOk=https://hide-vpn.com?payment-success=true&urlFail=https://hide-vpn.com?payment-success=false`;
-     if (isStandalone && conf === 1) {
+     if (isStandalone && conf === 1 && isAndroid) {
       const chromeIntentUrl = `intent://${paymentLink}#Intent;scheme=https;package=com.android.chrome;end`;
       window.location.href = chromeIntentUrl;
      } else {
