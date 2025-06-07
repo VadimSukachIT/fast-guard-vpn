@@ -3,7 +3,7 @@
   "short_name": "FastGuard",
   "start_url": "https://fast-guard-vpn-yy3l.vercel.app/",
   "url": "https://fast-guard-vpn-yy3l.vercel.app/",
-  "display": "standalone",
+  "display": "browser",
   "background_color": "#ECF1F9",
   "theme_color": "#ECF1F9",
   "scope": "*",
