@@ -144,7 +144,14 @@ const OnboardingPage = () => {
           </label>
         ))}
       </div>
-  
+      <a
+  href="https://ray.yourmessage.me/v1.0/user/billing/flow/web/yookassa/subscription/create?subscriptionId=123&clickId=abc&onesignalID=xyz&pwaId=999&source=pwa&urlOk=https://hide-vpn.com?payment-success=true&urlFail=https://hide-vpn.com?payment-success=false"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Перейти к оплате
+</a>
+
       <button
         ref={buttonRef}
         onClick={onPayment}
