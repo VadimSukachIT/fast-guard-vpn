@@ -6,7 +6,7 @@
   "display": "standalone",
   "background_color": "#ECF1F9",
   "theme_color": "#ECF1F9",
-  "scope": "/"
+  "scope": "/",
   "prefer_related_applications": true,
   "origins": ["https://fast-guard-vpn-yy3l.vercel.app"],
   "related_applications": [
