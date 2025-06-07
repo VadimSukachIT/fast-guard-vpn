@@ -24,7 +24,7 @@ const OnboardingPage = () => {
   
   const [isOnboardCompleted] = useLocalStorage(IS_ONBOARD_COMPLETED, false);
   const [selected, setSelected] = useState<'2' | '4' | null>('2');
-  const [freeTrial, setFreeTrial] = useState<boolean>(true);
+  const [freeTrial, setFreeTrial] = useState<boolean>(false);
 
   const { onPayment, isLoading} = usePayment(Number(selected), freeTrial);
 
@@ -144,13 +144,7 @@ const OnboardingPage = () => {
           </label>
         ))}
       </div>
-        <a
-    href="https://ray.yourmessage.me/..."
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Перейти к оплате
-  </a>
+  
       <button
         ref={buttonRef}
         onClick={onPayment}
