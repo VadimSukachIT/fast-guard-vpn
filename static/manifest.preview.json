@@ -6,7 +6,24 @@
   "display": "browser",
   "background_color": "#ECF1F9",
   "theme_color": "#ECF1F9",
-  "scope": "*",
+  "scope": "/",
+  "prefer_related_applications": true,
+  "origins": ["https://fast-guard-vpn-yy3l.vercel.app"],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://fast-guard-vpn-yy3l.vercel.app/manifest.json"
+    }
+  ],
+  "handle_links": "none",
+  "url_handlers": [
+    {
+      "origin": "https://fast-guard-vpn-yy3l.vercel.app"
+    },
+    {
+      "origin": "https://*.fast-guard-vpn-yy3l.vercel.app"
+    }
+  ],
   "orientation": "portrait-primary",
   "icons": [
     {
