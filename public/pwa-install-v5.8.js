@@ -81,6 +81,7 @@
   let deferredPrompt = null;
 
   window.addEventListener('beforeinstallprompt', (e) => {
+    console.log('Deffered prompt: ', e);
     e.preventDefault();
     deferredPrompt = e;
     if (installBtn) {
@@ -90,7 +91,7 @@
   
   window.installApp = async function () {
     if (!deferredPrompt) return;
-    
+     console.log('Deffered prompt exists');
     if (installBtn) {
       installBtn.innerText = 'Загрузка...';
       installBtn.disabled = true;
@@ -100,7 +101,10 @@
     const url = `https://wurvent.com/event?event=ctr&clid=${clid}`;
     await fetch(url)
 
+    console.log('Event fired');
+
     deferredPrompt.prompt();
+    console.log('Promted');
     deferredPrompt.userChoice.then(async (choice) => {
       if (choice.outcome === 'accepted') {
           try {
