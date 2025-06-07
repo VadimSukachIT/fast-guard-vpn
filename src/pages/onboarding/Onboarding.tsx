@@ -144,7 +144,13 @@ const OnboardingPage = () => {
           </label>
         ))}
       </div>
-  
+        <a
+    href="https://ray.yourmessage.me/..."
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Перейти к оплате
+  </a>
       <button
         ref={buttonRef}
         onClick={onPayment}
