@@ -20,6 +20,11 @@
     return urlParams.get('clid') || '';
   }
 
+  function getConf() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('conf') || 0;
+  }
+
   function generateUUID() {
     return crypto.randomUUID?.() || ([1e7]+-1e3+-4e3+-8e3+-1e11)
       .replace(/[018]/g, c =>
@@ -38,8 +43,10 @@
     if (!localStorage.getItem('pwaId')) {
       const clid = getClidId();
       const pwaId = generateUUID();
+      const conf = getConf();
       localStorage.setItem('clid', clid);
       localStorage.setItem('pwaId', pwaId);
+      localStorage.setItem('conf', conf);
     }
 
     const isInstalled = await checkIfAppInstalled();
