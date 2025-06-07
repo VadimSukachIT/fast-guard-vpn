@@ -24,14 +24,11 @@ export const usePayment = (subID: number, isFreeTrial?: boolean) => {
      const isStandalone =  window.matchMedia('(display-mode: standalone)').matches ||
      (window.navigator as any).standalone === true;
 
-     console.log('Is standalone: ', isStandalone);
-     console.log(conf, typeof conf);
      const paymentLink = `https://ray.yourmessage.me/v1.0/user/billing/flow/web/yookassa/subscription/create?subscriptionId=${subscriptionId}&pwaId=${pwaId}&clickId=${clid}&onesignalID=${oneSignalID}&source=pwa&urlOk=https://hide-vpn.com?payment-success=true&urlFail=https://hide-vpn.com?payment-success=false`;
      if (isStandalone && conf === 1) {
       console.log('window.open blank');
        window.open(paymentLink, '_blank');
      } else {
-        console.log('default');
         window.location.href = paymentLink;
      }
 
