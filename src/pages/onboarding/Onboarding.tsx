@@ -32,6 +32,10 @@ const OnboardingPage = () => {
     isOnboardCompleted ? navigate(-1) : navigate('/onboarding/info');
   };
 
+  const urlOk = encodeURIComponent('https://hide-vpn.com?payment-success=true');
+  const urlFail = encodeURIComponent('https://hide-vpn.com?payment-success=false');
+  const paymentLink = `https://ray.yourmessage.me/v1.0/user/billing/flow/web/yookassa/subscription/create?subscriptionId=${1}&pwaId=${123}&clickId=${123}&onesignalID=${123}&source=pwa&urlOk=${urlOk}&urlFail=${urlFail}`;
+
   return (
     <div className="relative min-h-dvh bg-darkBlue text-[clamp(14px,4vw,18px)]">
       {isLoading && <Loader />}
@@ -144,6 +148,9 @@ const OnboardingPage = () => {
           </label>
         ))}
       </div>
+      <a href={paymentLink} target="_blank" rel="noopener noreferrer">
+        Открыть оплату в браузере
+      </a>
       <button
         ref={buttonRef}
         onClick={onPayment}
