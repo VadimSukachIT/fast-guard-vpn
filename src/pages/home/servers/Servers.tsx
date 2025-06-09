@@ -2,10 +2,10 @@ import Header from '../../../components/Header';
 import GreenConnectionIcon from '../../../assets/svg/green-connection.svg?react';
 import YellowConnectionIcon from '../../../assets/svg/yellow-connection.svg?react';
 import RedConnectionIcon from '../../../assets/svg/red-connection.svg?react';
-import LockIcon from '../../../assets/svg/lock.svg?react';
+// import LockIcon from '../../../assets/svg/lock.svg?react';
 import { useNavigate } from 'react-router';
-import { useLocalStorage } from 'usehooks-ts';
-import { IS_PREMIUM_PURCHASED, SERVERS, SELECTED_SERVER_ID, DEFAULT_SERVER_ID } from '../../../constants';
+// import { useLocalStorage } from 'usehooks-ts';
+import { SERVERS } from '../../../constants';
 import { useTranslation } from 'react-i18next';
 import { useThemeColor } from '../../../hooks/useThemeColor';
 
@@ -20,15 +20,15 @@ const ServersPage = () => {
   const navigate = useNavigate();
   useThemeColor();
 
-  const [isPremiumPurchased] = useLocalStorage(IS_PREMIUM_PURCHASED, false);
-  const [selectedServerId, setSelectedServerId] = useLocalStorage(SELECTED_SERVER_ID, DEFAULT_SERVER_ID);
+  // const [isPremiumPurchased] = useLocalStorage(IS_PREMIUM_PURCHASED, false);
+  // const [selectedServerId, setSelectedServerId] = useLocalStorage(SELECTED_SERVER_ID, DEFAULT_SERVER_ID);
 
   const onServerClick = (id: string) => {
-    setSelectedServerId(id);
-    if (!isPremiumPurchased) {
-      navigate('/onboarding');
-      return;
-    }
+    // setSelectedServerId(id);
+    // if (!isPremiumPurchased) {
+    //   navigate('/onboarding');
+    //   return;
+    // }
     navigate('/connection-error');
   };
 
@@ -56,10 +56,10 @@ const ServersPage = () => {
 
             <div className="flex items-center gap-[clamp(10px,2.5vw,14px)]">
               {ServerConnectionIconsMap[signal]}
-              {!isPremiumPurchased ? (
+              {/* {!isPremiumPurchased ? (
                 <LockIcon className="w-[clamp(18px,4.5vw,20px)] h-auto" />
               ) : (
-                <>
+                <> */}
                   <input
                     type="radio"
                     name="server"
@@ -72,8 +72,8 @@ const ServersPage = () => {
                       <div className="w-[clamp(8px,2vw,10px)] h-[clamp(8px,2vw,10px)] rounded-full bg-lightBlue" />
                     )}
                   </div>
-                </>
-              )}
+                {/* </> */}
+              {/* )} */}
             </div>
           </label>
         ))}
