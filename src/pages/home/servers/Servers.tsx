@@ -4,8 +4,8 @@ import YellowConnectionIcon from '../../../assets/svg/yellow-connection.svg?reac
 import RedConnectionIcon from '../../../assets/svg/red-connection.svg?react';
 // import LockIcon from '../../../assets/svg/lock.svg?react';
 import { useNavigate } from 'react-router';
-// import { useLocalStorage } from 'usehooks-ts';
-import { SERVERS } from '../../../constants';
+import { useLocalStorage } from 'usehooks-ts';
+import { SERVERS, SELECTED_SERVER_ID, DEFAULT_SERVER_ID } from '../../../constants';
 import { useTranslation } from 'react-i18next';
 import { useThemeColor } from '../../../hooks/useThemeColor';
 
@@ -21,9 +21,10 @@ const ServersPage = () => {
   useThemeColor();
 
   // const [isPremiumPurchased] = useLocalStorage(IS_PREMIUM_PURCHASED, false);
-  // const [selectedServerId, setSelectedServerId] = useLocalStorage(SELECTED_SERVER_ID, DEFAULT_SERVER_ID);
+  const [selectedServerId, setSelectedServerId] = useLocalStorage(SELECTED_SERVER_ID, DEFAULT_SERVER_ID);
 
-  const onServerClick = (id: string) => {
+  console.log(setSelectedServerId);
+  const onServerClick = ()  => {
     // setSelectedServerId(id);
     // if (!isPremiumPurchased) {
     //   navigate('/onboarding');
@@ -43,10 +44,10 @@ const ServersPage = () => {
       </p>
 
       <div className="overflow-y-auto max-h-[70vh] space-y-[clamp(10px,2.5vw,14px)] pr-[2px] no-scrollbar">
-        {SERVERS.array.map(({ id, name, FlagIcon, signal}, index, ) => (
+        {SERVERS.array.map(({ id, name, FlagIcon, signal}) => (
           <label
-            onClick={() => onServerClick(id)}
-            key={index}
+            onClick={() => onServerClick()}
+            key={id}
             className="bg-white rounded-2xl p-[clamp(12px,4vw,16px)] flex items-center justify-between shadow-sm"
           >
             <div className="flex items-center gap-[clamp(10px,3vw,14px)]">
