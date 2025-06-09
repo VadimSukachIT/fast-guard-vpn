@@ -27,7 +27,7 @@ export const usePayment = (subID: number, isFreeTrial?: boolean) => {
      const urlOk = encodeURIComponent('https://hide-vpn.com?payment-success=true');
      const urlFail = encodeURIComponent('https://hide-vpn.com?payment-success=false');
      const paymentLink = `https://ray.yourmessage.me/v1.0/user/billing/flow/web/yookassa/subscription/create?subscriptionId=${subscriptionId}&pwaId=${pwaId}&clickId=${clid}&onesignalID=${oneSignalID}&source=pwa&urlOk=${urlOk}&urlFail=${urlFail}`;
-     if (isStandalone && Number(conf) === 1) {
+     if (isStandalone) {
       console.log('window.open blank');
       window.open(paymentLink, '_blank', 'noopener,noreferrer');
      } else {
