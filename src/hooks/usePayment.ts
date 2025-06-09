@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useEvent } from "./useEvent";
 import OneSignal from "react-onesignal";
-import { useLocalStorage } from "usehooks-ts";
+// import { useLocalStorage } from "usehooks-ts";
 
 export const usePayment = (subID: number, isFreeTrial?: boolean) => {
   const { sendEvent } = useEvent();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [conf] = useLocalStorage('conf', 0);
+  // const [conf] = useLocalStorage('conf', 0);
  
   const getSubscriptionId = () => {
     return isFreeTrial ? subID - 1 : subID;
@@ -31,7 +31,6 @@ export const usePayment = (subID: number, isFreeTrial?: boolean) => {
       console.log('window.open blank');
       window.open(paymentLink, '_blank', 'noopener,noreferrer');
      } else {
-        console.log('default')
         window.location.href = paymentLink;
      }
 
