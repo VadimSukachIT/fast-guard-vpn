@@ -148,7 +148,7 @@ const OnboardingPage = () => {
           </label>
         ))}
       </div>
-      <a href={paymentLink} target="_blank" rel="noopener noreferrer">
+      <a href={paymentLink} target="_blank">
         Открыть оплату в браузере
       </a>
       <button
