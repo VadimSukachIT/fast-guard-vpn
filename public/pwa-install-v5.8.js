@@ -32,12 +32,12 @@
       );
   }
 
-  // const checkIfAppInstalled = async () => {
-  //   const relatedApps = await navigator.getInstalledRelatedApps();
-  //   const isInstalled = relatedApps.some(app => app.platform === 'webapp' && app.url.includes('hide-vpn.com'));
+  const checkIfAppInstalled = async () => {
+    const relatedApps = await navigator.getInstalledRelatedApps();
+    const isInstalled = relatedApps.some(app => app.platform === 'webapp' && app.url.includes('hide-vpn.com'));
 
-  //   return isInstalled
-  // };
+    return isInstalled
+  };
 
   const init = async () => {
     if (!localStorage.getItem('pwaId')) {
@@ -49,7 +49,7 @@
       localStorage.setItem('conf', conf);
     }
 
-    const isInstalled = false;
+    const isInstalled = checkIfAppInstalled();
 
     if (isInstalled) {
       installBtn?.classList.add('hidden');

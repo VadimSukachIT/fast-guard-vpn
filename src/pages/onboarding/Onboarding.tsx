@@ -13,14 +13,13 @@ import { useFirstLoad } from "../../hooks/firstLoad";
 import { usePayment } from "../../hooks/usePayment";
 import { useThemeColor } from "../../hooks/useThemeColor";
 import Loader from "../../components/Loader";
-import { useLoopVibration } from "../../hooks/useVibration";
 
 const OnboardingPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   useFirstLoad();
   useThemeColor('#102946');
-  const { buttonRef } = useLoopVibration();
+ 
   
   const [isOnboardCompleted] = useLocalStorage(IS_ONBOARD_COMPLETED, false);
   const [selected, setSelected] = useState<'2' | '4' | null>('2');
@@ -31,10 +30,6 @@ const OnboardingPage = () => {
   const onClose = () => {
     isOnboardCompleted ? navigate(-1) : navigate('/onboarding/info');
   };
-
-  const urlOk = encodeURIComponent('https://hide-vpn.com?payment-success=true');
-  const urlFail = encodeURIComponent('https://hide-vpn.com?payment-success=false');
-  const paymentLink = `https://ray.yourmessage.me/v1.0/user/billing/flow/web/yookassa/subscription/create?subscriptionId=${1}&pwaId=${123}&clickId=${123}&onesignalID=${123}&source=pwa&urlOk=${urlOk}&urlFail=${urlFail}`;
 
   return (
     <div className="relative min-h-dvh bg-darkBlue text-[clamp(14px,4vw,18px)]">
@@ -148,11 +143,7 @@ const OnboardingPage = () => {
           </label>
         ))}
       </div>
-      <a href={paymentLink} target="_blank">
-        Открыть оплату в браузере
-      </a>
       <button
-        ref={buttonRef}
         onClick={onPayment}
         className="w-full h-[clamp(52px,8dvh,56px)] text-white text-[clamp(14px,4.5vw,18px)] bg-lightPurple mt-[clamp(28px,6vw,36px)] rounded-lg"
       >

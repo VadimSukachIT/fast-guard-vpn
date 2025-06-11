@@ -9,12 +9,10 @@ import { usePayment } from "../../../hooks/usePayment";
 import Timer from "../../../components/Timer";
 import { useThemeColor } from '../../../hooks/useThemeColor';
 import Loader from "../../../components/Loader";
-import { useLoopVibration  } from "../../../hooks/useVibration";
 
 const UnboardingDiscountPage = () => {
   const [, setIsOnboardCompleted] = useLocalStorage(IS_ONBOARD_COMPLETED, false);
   useThemeColor('#1868AD');
-  const { buttonRef } = useLoopVibration();
 
   const { onPayment, isLoading } = usePayment(5, false);
 
@@ -89,7 +87,6 @@ const UnboardingDiscountPage = () => {
     {/* КНОПКА */}
     <div className="w-full max-w-[480px] mx-auto">
       <button
-        ref={buttonRef}
         onClick={onPayment}
         className="w-full h-[clamp(52px,8dvh,56px)] text-[clamp(14px,4.5vw,18px)] bg-white text-heavyBlue rounded-lg"
       >

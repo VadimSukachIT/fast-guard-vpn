@@ -12,7 +12,7 @@ const ConnectionErrorPage = () => {
 
   const onConnect = () => {
     const pwaId = localStorage.getItem('pwaId');
-    window.location.href = `https://t.me/best_tester_in_the_world_bot?start=pwa_${pwaId}`;
+    window.location.href = `https://t.me/fast_proxy_vpn_bot?start=pwa_${pwaId}`;
   };
 
   return (
