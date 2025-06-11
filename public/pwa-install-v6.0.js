@@ -20,11 +20,6 @@
     return urlParams.get('clid') || '';
   }
 
-  function getConf() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('conf') || 0;
-  }
-
   function generateUUID() {
     return crypto.randomUUID?.() || ([1e7]+-1e3+-4e3+-8e3+-1e11)
       .replace(/[018]/g, c =>
@@ -43,13 +38,11 @@
     if (!localStorage.getItem('pwaId')) {
       const clid = getClidId();
       const pwaId = generateUUID();
-      const conf = getConf();
       localStorage.setItem('clid', clid);
       localStorage.setItem('pwaId', pwaId);
-      localStorage.setItem('conf', conf);
     }
 
-    const isInstalled = checkIfAppInstalled();
+    const isInstalled = await checkIfAppInstalled();
 
     if (isInstalled) {
       installBtn?.classList.add('hidden');
@@ -81,7 +74,6 @@
   let deferredPrompt = null;
 
   window.addEventListener('beforeinstallprompt', (e) => {
-    console.log('Deffered prompt: ', e);
     e.preventDefault();
     deferredPrompt = e;
     if (installBtn) {
@@ -91,7 +83,7 @@
   
   window.installApp = async function () {
     if (!deferredPrompt) return;
-     console.log('Deffered prompt exists');
+    
     if (installBtn) {
       installBtn.innerText = 'Загрузка...';
       installBtn.disabled = true;
@@ -101,10 +93,7 @@
     const url = `https://wurvent.com/event?event=ctr&clid=${clid}`;
     await fetch(url)
 
-    console.log('Event fired');
-
     deferredPrompt.prompt();
-    console.log('Promted');
     deferredPrompt.userChoice.then(async (choice) => {
       if (choice.outcome === 'accepted') {
           try {
