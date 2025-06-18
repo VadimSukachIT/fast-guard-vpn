@@ -41,7 +41,7 @@ const OnboardingPage = () => {
 
       {/* Header + видео */}
       <div className="shrink-0 px-[clamp(1px,4dvw,24px)]">
-      <div className="w-full relative flex justify-center h-[clamp(100px,14dvh,140px)]">
+      <div className="w-full relative flex justify-center h-[clamp(100px,16dvh,150px)]">
           <button
             onClick={onClose}
             className="absolute top-0 right-0 shrink-0 ml-auto"
@@ -50,7 +50,7 @@ const OnboardingPage = () => {
             <CloseIcon className="w-[clamp(28px,6dvw,36px)] h-auto" />
           </button>
           <video
-            className="h-[clamp(100px,14dvh,140px)]"
+            className="h-[clamp(100px,16dvh,150px)]"
             autoPlay
             loop
             muted
@@ -69,7 +69,7 @@ const OnboardingPage = () => {
       </div>
 
       {/* Scrollable content */}
-      <div className="flex-1 overflow-y-auto min-h-0 px-[clamp(16px,4dvw,24px)] mt-[clamp(16px,4dvw,24px)] mb-[clamp(20px,5dvw,28px)]">
+      <div className="scroll-hidden no-scrollbar flex-1 overflow-y-auto min-h-0 px-[clamp(16px,4dvw,24px)] mt-[clamp(16px,4dvw,24px)] mb-[clamp(20px,5dvw,28px)]">
         <div className="bg-white rounded-xl px-[clamp(16px,4dvw,24px)] py-[clamp(12px,3dvw,20px)]">
           {ADVANTAGES.map(({ Icon, title, desc }, index) => (
             <div
