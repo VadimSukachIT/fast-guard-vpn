@@ -14,6 +14,7 @@ import { useFirstLoad } from "../../hooks/firstLoad";
 import { usePayment } from "../../hooks/usePayment";
 import { useThemeColor } from "../../hooks/useThemeColor";
 import Loader from "../../components/Loader";
+import './shine.css';
 
 const ADVANTAGES = [
   { Icon: LockIcon, title: 'Безопасность в Интернете', desc: 'Полная анонимность в сети, защита личных данных от слежки' },
@@ -98,8 +99,9 @@ const OnboardingPage = () => {
       <div className="shrink-0 px-[clamp(20px,5dvw,32px)]">
       <button
           onClick={onPayment}
-          className="w-full h-[clamp(52px,8vh,56px)] bg-lightPurple text-white text-[clamp(14px,4.5vw,18px)] font-semibold rounded-lg"
+          className="overflow-hidden relative w-full h-[clamp(52px,8vh,56px)] bg-lightPurple text-white text-[clamp(14px,4.5vw,18px)] font-semibold rounded-lg"
         >
+          <div className="shine" />
            Подпишись за 10₽ / месяц
         </button>
       </div>
