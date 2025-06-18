@@ -88,6 +88,7 @@ const UnboardingDiscountPage = () => {
     {/* КНОПКА */}
     <div className="w-full max-w-[480px] mx-auto">
       <button
+        data-ignore-vibrate
         onClick={onPayment}
         className="w-full h-[clamp(52px,8dvh,56px)] text-[clamp(14px,4.5vw,18px)] bg-white text-heavyBlue rounded-lg"
       >

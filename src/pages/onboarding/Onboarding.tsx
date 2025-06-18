@@ -99,6 +99,7 @@ const OnboardingPage = () => {
       <div className="shrink-0 px-[clamp(20px,5dvw,32px)]">
       <button
           onClick={onPayment}
+          data-ignore-vibrate
           className="overflow-hidden relative w-full h-[clamp(52px,8vh,56px)] bg-lightPurple text-white text-[clamp(14px,4.5vw,18px)] font-semibold rounded-lg"
         >
           <div className="shine" />
