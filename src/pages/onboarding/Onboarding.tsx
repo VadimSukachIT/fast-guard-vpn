@@ -6,7 +6,6 @@ import { IS_ONBOARD_COMPLETED } from "../../constants";
 import CloseIcon from '../../assets/svg/paywall-close.svg?react';
 import NetworkIcon from '../../assets/svg/paywall-network.svg?react';
 import LockIcon from '../../assets/svg/paywall-lock.svg?react';
-import EyeIcon from '../../assets/svg/paywall-eye.svg?react';
 import DownloadIcon from '../../assets/svg/paywall-download.svg?react';
 import ClockIcon from '../../assets/svg/paywall-clock.svg?react';
 
