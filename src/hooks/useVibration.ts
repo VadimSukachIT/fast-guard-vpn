@@ -8,7 +8,6 @@ export const useLoopVibration = () => {
 
   useEffect(() => {
     const handler = (e: PointerEvent) => {
-      buttonRef.current?.classList.add("animate-pulseLoops");
       const target = e.target as HTMLElement;
       if (target.closest("[data-ignore-vibrate]")) return;
  
@@ -17,8 +16,6 @@ export const useLoopVibration = () => {
         if ('vibrate' in navigator) {
           navigator.vibrate([100, 900, 100, 900, 100, 900]);
         }
-        
-        // playLoop();
 
         timeoutRef.current = setInterval(() => {
           if ('vibrate' in navigator) {

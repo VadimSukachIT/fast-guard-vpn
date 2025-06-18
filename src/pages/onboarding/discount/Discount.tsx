@@ -9,12 +9,13 @@ import { usePayment } from "../../../hooks/usePayment";
 import Timer from "../../../components/Timer";
 import { useThemeColor } from '../../../hooks/useThemeColor';
 import Loader from "../../../components/Loader";
+import { useLoopVibration } from "../../../hooks/useVibration";
 
 const UnboardingDiscountPage = () => {
   const [, setIsOnboardCompleted] = useLocalStorage(IS_ONBOARD_COMPLETED, false);
   useThemeColor('#1868AD');
-
-  const { onPayment, isLoading } = usePayment(2);
+  useLoopVibration();
+  const { onPayment, isLoading } = usePayment(5);
 
   const { t } = useTranslation();
   const navigate = useNavigate();

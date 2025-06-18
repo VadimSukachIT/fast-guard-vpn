@@ -14,6 +14,7 @@ import { usePayment } from "../../hooks/usePayment";
 import { useThemeColor } from "../../hooks/useThemeColor";
 import Loader from "../../components/Loader";
 import './shine.css';
+import { useLoopVibration } from "../../hooks/useVibration";
 
 const ADVANTAGES = [
   { Icon: LockIcon, title: 'Безопасность в Интернете', desc: 'Полная анонимность в сети, защита личных данных от слежки' },
@@ -26,9 +27,10 @@ const OnboardingPage = () => {
   const navigate = useNavigate();
   useFirstLoad();
   useThemeColor('#ECF1F9');
+  useLoopVibration();
 
   const [isOnboardCompleted] = useLocalStorage(IS_ONBOARD_COMPLETED, false);
-  const { onPayment, isLoading } = usePayment(1);
+  const { onPayment, isLoading } = usePayment(6);
 
   const onClose = () => {
     isOnboardCompleted ? navigate(-1) : navigate('/onboarding/info');
