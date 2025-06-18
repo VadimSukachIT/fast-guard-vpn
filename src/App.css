@@ -35,6 +35,7 @@ body {
   --color-buttonGrey: #787880;
   --color-hoveredBlue: #143D73;
   --color-borderBlue: #7097C0;
+  --color-paywallBg: #ECF1F9;
   --breakpoint-custom: 25rem;
 
   --animate-scrollUp: scrollUp 50s linear infinite;

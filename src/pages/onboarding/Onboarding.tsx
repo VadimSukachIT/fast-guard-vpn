@@ -1,157 +1,109 @@
-import { useState } from "react";
 import { useNavigate } from "react-router";
-import { useTranslation } from "react-i18next";
 
-import { ADVANTAGES_LIST } from "./constants";
 import { useLocalStorage } from "usehooks-ts";
-
 import { IS_ONBOARD_COMPLETED } from "../../constants";
-import CloseIcon from '../../assets/svg/close.svg?react';
-import CheckmarkIcon from '../../assets/svg/checkmark.svg?react';
-import FreeTrialIcon from '../../assets/svg/freeAccess.svg?react';
+
+import CloseIcon from '../../assets/svg/paywall-close.svg?react';
+import NetworkIcon from '../../assets/svg/paywall-network.svg?react';
+import LockIcon from '../../assets/svg/paywall-lock.svg?react';
+import EyeIcon from '../../assets/svg/paywall-eye.svg?react';
+import DownloadIcon from '../../assets/svg/paywall-download.svg?react';
+import ClockIcon from '../../assets/svg/paywall-clock.svg?react';
+
 import { useFirstLoad } from "../../hooks/firstLoad";
 import { usePayment } from "../../hooks/usePayment";
 import { useThemeColor } from "../../hooks/useThemeColor";
 import Loader from "../../components/Loader";
 
+const ADVANTAGES = [
+  { Icon: LockIcon, title: 'Безопасность в Интернете', desc: 'Полная анонимность в сети, защита личных данных от слежки' },
+  { Icon: NetworkIcon, title: 'Доступ к контенту со всего мира', desc: 'Обход блокировок, доступ к контенту без ограничений' },
+  { Icon: EyeIcon, title: 'Абсолютная приватность', desc: 'Больше никаких назойливых баннеров и трекеров.' },
+  { Icon: DownloadIcon, title: 'Доступ к приложениям', desc: 'Устанавливайте любые заблокированные приложения' },
+  { Icon: ClockIcon, title: 'Максимальная скорость', desc: 'Просмотр видео без лагов и ограничений' },
+];
+
 const OnboardingPage = () => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
   useFirstLoad();
-  useThemeColor('#102946');
- 
-  
-  const [isOnboardCompleted] = useLocalStorage(IS_ONBOARD_COMPLETED, false);
-  const [selected, setSelected] = useState<'2' | '4' | null>('2');
-  const [freeTrial, setFreeTrial] = useState<boolean>(false);
+  useThemeColor('#ECF1F9');
 
-  const { onPayment, isLoading} = usePayment(Number(selected), freeTrial);
+  const [isOnboardCompleted] = useLocalStorage(IS_ONBOARD_COMPLETED, false);
+  const { onPayment, isLoading } = usePayment(1);
 
   const onClose = () => {
     isOnboardCompleted ? navigate(-1) : navigate('/onboarding/info');
   };
 
   return (
-    <div className="relative min-h-dvh bg-darkBlue text-[clamp(14px,4vw,18px)]">
+    <div className="relative h-dvh bg-paywallBg text-[clamp(14px,4dvw,18px)] flex flex-col max-w-[480px] mx-auto pt-[clamp(16px,4dvh,56px)] pb-[clamp(20px,6dvh,56px)]">
       {isLoading && <Loader />}
-       <div
-        className="absolute top-0 left-0 w-full h-[40dvh] bg-[url('/png/paywall.png')] bg-repeat bg-[length:110vw] animate-scrollUp pointer-events-none"
-        aria-hidden="true"
-      />
-        <div className="relative z-10 px-[clamp(20px,5vw,32px)] flex flex-col items-center justify-start min-h-dvh pt-[clamp(16px,4dvh,56px)] pb-[clamp(20px,6dvh,56px)] max-w-[480px] mx-auto">
-          <div className="w-full flex items-center">
-            <button onClick={onClose} className="opacity-50" data-ignore-vibrate>
-              <CloseIcon className="w-[clamp(28px,8vw,36px)] h-auto" />
-            </button>
-          </div>
-    
-    <div className="flex flex-1 flex-col items-center justify-end">
-      <div className="bg-meltedWhite/80 p-[clamp(20px,5vw,32px)] border-[2px] border-[#5D768A] backdrop-blur-xs shadow-[0_0_7px_rgba(0,0,0,0.25)] rounded-3xl rounded-br-none rounded-bl-none w-full text-center">
-        <h1 className="text-white font-bold leading-tight text-[clamp(24px,6.5vw,32px)] mb-[clamp(12px,3vw,16px)]">
-          {t('onboarding.header')}
-        </h1>
-      </div>
-  
-      <div className="-mt-[clamp(20px,5vw,32px)] bg-customBlack px-[clamp(20px,5vw,32px)] py-[clamp(20px,5vw,28px)] rounded-3xl w-full text-left z-20">
-        <ul className="space-y-[clamp(14px,4vw,20px)]">
-          {ADVANTAGES_LIST.map(({ text, Icon }) => (
-            <li key={text} className="flex items-center justify-between">
-              <div className="flex items-center gap-[clamp(8px,2.5vw,12px)]">
-                <Icon className="w-[clamp(20px,6vw,28px)] h-[clamp(20px,6vw,28px)]" />
-                <span className="text-white">
-                  {t(`onboarding.${text}`)}
-                </span>
-              </div>
-              <CheckmarkIcon className="w-[clamp(18px,6vw,26px)] h-[clamp(20px,6vw,28px)]" />
-            </li>
-          ))}
-        </ul>
-      </div>
-  
-      <div className="mt-[clamp(24px,6vw,32px)] w-full z-20 space-y-[clamp(16px,4vw,24px)]">
-        <div className={`
-            flex items-center justify-between rounded-full h-[clamp(48px,7dvh,56px)] px-[clamp(20px,5vw,28px)] border-2
-            ${freeTrial ? ' bg-deepGreen border-borderGreen' : 'bg-transparent border-white'}
-          `}>
-            <div className="flex flex-col items-start justify-center">
-              <span className="text-white font-semibold">
-                {t(freeTrial ? 'onboarding.freeTrial' : 'onboarding.activateFreeTrial')}
-              </span>
-              {freeTrial && (
-              <div className="flex items-center">
-               <FreeTrialIcon className='w-[clamp(10px, 3vw, 12px] h-[clamp(10px, 3vw, 12px]' />
-                <span className="text-white text-[clamp(10px,4vw,12px)] ml-1">
-                  {t(freeTrial ? 'onboarding.freeTrialTip' : 'onboarding.activateFreeTrial')}
-                </span>
-                </div>
-               )}
-            </div>
-          <label className="relative inline-block w-11 h-6">
-            <input type="checkbox" className="sr-only peer" checked={freeTrial} onChange={() => setFreeTrial((prev) => !prev)}/>
-            <div className="w-full h-full bg-buttonGrey rounded-full peer-checked:bg-lightGreen transition-colors" />
-            <div className="absolute top-[2px] left-[2px] w-5 h-5 bg-white rounded-full transition-transform peer-checked:translate-x-full" />
-          </label>
-        </div>
-  
-        {[{
-          id: '4',
-          label: t('onboarding.weekPlan'),
-          price: `250₽ / ${t('onboarding.week')}`,
-          freeTrialLabel: t('onboarding.freeTrialWeekLabel'),
-          freeTrialPrice:  `${t('onboarding.later')} 250₽ / ${t('onboarding.week')}`,
-        }, {
-          id: '2',
-          label: t('onboarding.yearPlan'),
-          price: `166₽ ${t('onboarding.inMonth')}`,
-          freeTrialLabel: t('onboarding.freeTrialYearLabel'),
-          freeTrialPrice: `166₽ ${t('onboarding.inMonth')}`,
-          badge: `2000₽ / ${t('onboarding.year')}`,
-          isBestPrice: true,
-        }].map(({ id, label, price, freeTrialLabel, freeTrialPrice, badge, isBestPrice}) => (
-          <label key={id} className={`
-            flex items-center h-[clamp(48px,7dvh,56px)] px-[clamp(20px,5vw,28px)] border-2 rounded-full relative
-            ${selected === id ? 'border-lightBlue bg-hoveredBlue' : 'border-white bg-transparent'}
-          `}>
-              {isBestPrice && (
-               <div className="absolute top-[-10px] right-[clamp(20px,5vw,28px)] bg-lightGreen text-black text-[clamp(10px,2.5vw,12px)] px-2 py-[2px] rounded-full">
-                  {t('onboarding.bestPrice')}
-               </div>
-              )}
-            <div className="flex items-center justify-between w-full">
-              <div className='flex items-center'>
-                <input
-                  type="radio"
-                  name="custom-radio"
-                  className="sr-only peer"
-                  checked={selected === id}
 
-                  // @ts-ignore
-                  onChange={() => setSelected(id)}
-                />
-                <div className="w-[clamp(20px,4.5vw,24px)] h-[clamp(20px,4.5vw,24px)] rounded-full border-2 border-secondaryGrey peer-checked:border-lightBlue flex items-center justify-center">
-                  {selected === id && (
-                    <div className="w-[clamp(10px,3.5vw,14px)] h-[clamp(10px,3.5vw,14px)] rounded-full bg-lightBlue" />
-                  )}
-                </div>
-                <div className="flex flex-col items-start justify-center ml-[clamp(8px,2.5vw,12px)]"> 
-                  <span className="text-white">{freeTrial ? freeTrialLabel : label}</span>
-                  {badge && <span className="text-white text-[clamp(12px,4.5vw,14px)]" >{badge}</span>}
-                </div>
-              </div>
-                <span className="text-white text-[clamp(12px,4.5vw,14px)] text-medium">{freeTrial ? freeTrialPrice : price}</span>
-            </div>
-          </label>
-        ))}
+      {/* Header + видео */}
+      <div className="shrink-0 px-[clamp(1px,4dvw,24px)]">
+      <div className="w-full relative flex justify-center h-[clamp(100px,14dvh,140px)]">
+          <button
+            onClick={onClose}
+            className="absolute top-0 right-0 shrink-0 ml-auto"
+            data-ignore-vibrate
+          >
+            <CloseIcon className="w-[clamp(28px,6dvw,36px)] h-auto" />
+          </button>
+          <video
+            className="h-[clamp(100px,14dvh,140px)]"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src="/webm/vpn-animation.webm" type="video/webm" />
+            Ваш браузер не поддерживает видео.
+          </video>
+        </div>
+        <h1 className="text-[clamp(20px,5dvw,24px)] text-center font-bold text-пку mb-[clamp(8px,3dvw,16px)]">
+          FastGuard VPN Premium
+        </h1>
+        <p className="text-center text-textGrey text-[clamp(15px,4dvw,18px)] leading-snug">
+          Ваши действия в интернете остаются конфиденциальными. Мы не храним журналы и защищаем трафик шифрованием.
+        </p>
       </div>
+
+      {/* Scrollable content */}
+      <div className="flex-1 overflow-y-auto min-h-0 px-[clamp(16px,4dvw,24px)] mt-[clamp(16px,4dvw,24px)] mb-[clamp(20px,5dvw,28px)]">
+        <div className="bg-white rounded-xl px-[clamp(16px,4dvw,24px)] py-[clamp(12px,3dvw,20px)]">
+          {ADVANTAGES.map(({ Icon, title, desc }, index) => (
+            <div
+              key={title}
+              className="flex items-start gap-[clamp(12px,4dvw,16px)] pt-[clamp(10px,3dvw,14px)]"
+            >
+              <Icon width="32px" height="32px" />
+              <div
+                className={`flex-1 flex flex-col pb-[clamp(10px,3dvw,14px)] ${
+                  index !== ADVANTAGES.length - 1 ? 'border-b border-[#D8DCE5]' : ''
+                }`}
+              >
+                <h3 className="text-black font-semibold text-[clamp(14px,4dvw,16px)]">
+                  {title}
+                </h3>
+                <p className="text-[#7A7B7C] text-[clamp(14px,4dvw,16px)] leading-tight">
+                  {desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Button */}
+      <div className="shrink-0 px-[clamp(20px,5dvw,32px)]">
       <button
-        onClick={onPayment}
-        className="w-full h-[clamp(52px,8dvh,56px)] text-white text-[clamp(14px,4.5vw,18px)] bg-lightPurple mt-[clamp(28px,6vw,36px)] rounded-lg"
-      >
-        {t('common.continue')}
-      </button>
+          onClick={onPayment}
+          className="w-full h-[clamp(52px,8vh,56px)] bg-lightPurple text-white text-[clamp(14px,4.5vw,18px)] font-semibold rounded-lg"
+        >
+           Подпишись за 10₽ / месяц
+        </button>
+      </div>
     </div>
-    </div>
-  </div>
   );
 };
 

@@ -14,7 +14,7 @@ const UnboardingDiscountPage = () => {
   const [, setIsOnboardCompleted] = useLocalStorage(IS_ONBOARD_COMPLETED, false);
   useThemeColor('#1868AD');
 
-  const { onPayment, isLoading } = usePayment(5, false);
+  const { onPayment, isLoading } = usePayment(2);
 
   const { t } = useTranslation();
   const navigate = useNavigate();
