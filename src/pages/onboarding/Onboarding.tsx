@@ -19,7 +19,6 @@ import './shine.css';
 const ADVANTAGES = [
   { Icon: LockIcon, title: 'Безопасность в Интернете', desc: 'Полная анонимность в сети, защита личных данных от слежки' },
   { Icon: NetworkIcon, title: 'Доступ к контенту со всего мира', desc: 'Обход блокировок, доступ к контенту без ограничений' },
-  { Icon: EyeIcon, title: 'Абсолютная приватность', desc: 'Больше никаких назойливых баннеров и трекеров.' },
   { Icon: DownloadIcon, title: 'Доступ к приложениям', desc: 'Устанавливайте любые заблокированные приложения' },
   { Icon: ClockIcon, title: 'Максимальная скорость', desc: 'Просмотр видео без лагов и ограничений' },
 ];
@@ -42,7 +41,7 @@ const OnboardingPage = () => {
 
       {/* Header + видео */}
       <div className="shrink-0 px-[clamp(1px,4dvw,24px)]">
-      <div className="w-full relative flex justify-center h-[clamp(100px,16dvh,150px)]">
+      <div className="w-full relative flex justify-center h-[clamp(100px,18dvh,200px)]">
           <button
             onClick={onClose}
             className="absolute top-0 right-0 shrink-0 ml-auto"
@@ -51,7 +50,7 @@ const OnboardingPage = () => {
             <CloseIcon className="w-[clamp(28px,6dvw,36px)] h-auto" />
           </button>
           <video
-            className="h-[clamp(100px,16dvh,150px)]"
+            className="h-[clamp(100px,18dvh,200px)]"
             autoPlay
             loop
             muted
@@ -64,22 +63,22 @@ const OnboardingPage = () => {
         <h1 className="text-[clamp(20px,5dvw,24px)] text-center font-bold text-пку mb-[clamp(8px,3dvw,16px)]">
           FastGuard VPN Premium
         </h1>
-        <p className="text-center text-textGrey text-[clamp(15px,4dvw,18px)] leading-snug">
-          Ваши действия в интернете остаются конфиденциальными. Мы не храним журналы и защищаем трафик шифрованием.
+        <p className="text-center text-textGrey text-[clamp(14px,4dvw,18px)] leading-snug">
+        Оставайся анонимным. Мы не храним данные пользователя и шифруем весь трафик.
         </p>
       </div>
 
       {/* Scrollable content */}
-      <div className="scroll-hidden no-scrollbar flex-1 overflow-y-auto min-h-0 px-[clamp(16px,4dvw,24px)] mt-[clamp(16px,4dvw,24px)] mb-[clamp(20px,5dvw,28px)]">
-        <div className="bg-white rounded-xl px-[clamp(16px,4dvw,24px)] py-[clamp(12px,3dvw,20px)]">
+      <div className="scroll-hidden no-scrollbar flex-1 overflow-y-auto min-h-0 px-[clamp(16px,4dvw,24px)] mt-[clamp(16px,4dvw,24px)] mb-[clamp(10px,3dvw,16px)]">
+        <div className="bg-white rounded-xl px-[clamp(16px,4dvw,24px)]">
           {ADVANTAGES.map(({ Icon, title, desc }, index) => (
             <div
               key={title}
-              className="flex items-start gap-[clamp(12px,4dvw,16px)] pt-[clamp(10px,3dvw,14px)]"
+              className="flex items-start gap-[clamp(12px,4dvw,16px)] pt-[clamp(8px,2.5dvw,12px)]"
             >
               <Icon width="32px" height="32px" />
               <div
-                className={`flex-1 flex flex-col pb-[clamp(10px,3dvw,14px)] ${
+                className={`flex-1 flex flex-col pb-[clamp(8px,2.5dvw,12px)] ${
                   index !== ADVANTAGES.length - 1 ? 'border-b border-[#D8DCE5]' : ''
                 }`}
               >
