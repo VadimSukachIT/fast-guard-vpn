@@ -19,7 +19,7 @@ import { useLoopVibration } from "../../hooks/useVibration";
 const ADVANTAGES = [
   { Icon: LockIcon, title: 'Безопасность в Интернете', desc: 'Полная анонимность в сети, защита личных данных от слежки' },
   { Icon: NetworkIcon, title: 'Доступ к контенту со всего мира', desc: 'Обход блокировок, доступ к контенту без ограничений' },
-  { Icon: DownloadIcon, title: 'Доступ к приложениям', desc: 'Устанавливайте любые заблокированные приложения' },
+  { Icon: DownloadIcon, title: 'Гарантированный возврат средств', desc: 'Обратитесь в поддержку и мы вернем все ваши средства.' },
   { Icon: ClockIcon, title: 'Максимальная скорость', desc: 'Просмотр видео без лагов и ограничений' },
 ];
 
@@ -65,7 +65,7 @@ const OnboardingPage = () => {
           FastGuard VPN Premium
         </h1>
         <p className="text-center text-textGrey text-[clamp(14px,4dvw,18px)] leading-snug">
-        Оставайся анонимным. Мы не храним данные пользователя и шифруем весь трафик.
+        Оставайся анонимным всего за 10₽ в месяц. Мы не храним данные пользователя и шифруем весь трафик.
         </p>
       </div>
 
